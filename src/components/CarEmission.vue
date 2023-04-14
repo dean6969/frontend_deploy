@@ -3,7 +3,6 @@
     <div class="headerPic">
       <img src="../assets/car.gif" alt="" class="car_gif">
       <h2 class="carHeader">Try our green calculate for your vehicle</h2>
-      <!-- <div style="clear: both;"></div> -->
     </div>
     <el-row :gutter="0">
       <el-col :span="16"
@@ -149,7 +148,6 @@ export default {
     };
   },
   mounted() {
-    // get brand list
     this.fetchBrands();
   },
   methods: {
@@ -225,11 +223,9 @@ export default {
   height: 90px;
   background-color: #8ecd94;
   overflow: hidden;
-  /* text-align: center; */
 
 }
 .emission-content {
-  /* background-color: orange; */
   height: 600px;
   background-image: url(../assets/car_bg.png);
   background-size: auto 100%;
@@ -237,7 +233,6 @@ export default {
   overflow: hidden;
 }
 .el-row {
-  /* background-color: pink; */
   padding: 0 !important;
 }
 .el-input,

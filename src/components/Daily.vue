@@ -3,7 +3,6 @@
     <div class="text item searchHeader">
       <img src="../assets/car.gif" alt="" class="car_gif" />
       <h2 class="carHeader">Let's live a low-carbon life together</h2>
-      <!-- <div style="clear: both;"></div> -->
     </div>
     <div class="intro">
         <el-row :gutter="20">
@@ -60,7 +59,6 @@ export default {};
 }
 
 .el-aside {
-  /* background-color: #d3dce6; */
   color: #333;
   text-align: center;
   line-height: 200px;
@@ -70,11 +68,9 @@ export default {};
 }
 .el-menu{
     height: 300px;
-    /* background-color: orange; */
 }
 
 .el-main {
-  /* background-color: #e9eef3; */
   color: #333;
   text-align: center;
   height: 400px;
