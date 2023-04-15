@@ -8,12 +8,14 @@
 </script>
 
 <style>
-/* #app{
+ #app{
 
   background: url("./assets/homg-bg.jpg")no-repeat;
   background-size: cover;
-  min-height: 100vh;
-  min-width: 100%;
+   height: 100%;
+   width: 100%;
+  /*min-height: 100vh;*/
+  /*min-width: 100%;*/
 
-} */
+}
 </style>

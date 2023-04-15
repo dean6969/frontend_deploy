@@ -10,18 +10,28 @@
     <button class="function1-button" style=" position: relative;overflow: hidden">
       <p>Know the temperature rise you're causing</p>
          <div class="y_pos">
-          <button class="button_inner" @click="goCarEmission"><i class="el-icon-share"></i>emission calculator</button>
+<!--          <button class="button_inner" @click="goCarEmission"><i class="el-icon-share"></i>emission calculator</button>-->
+           <img src="../assets/y_admin_1.png" alt=""/>
          </div>
     </button>
     <button class="function1-button" style=" position: relative;overflow: hidden">
       <p>know the Emission your car made</p>
          <div class="y_pos">
-          <button class="button_inner" @click="goSearch"><i class="el-icon-share"></i>emission Search</button>
+<!--          <button class="button_inner" @click="goSearch"><i class="el-icon-share"></i>emission Search</button>-->
+           <img src="../assets/y_admin_2.png" alt=""/>
          </div>
     </button>
+
+      <button class="function1-button" style=" position: relative;overflow: hidden">
+        <p>know the Emission your car made</p>
+        <div class="y_pos">
+          <!--          <button class="button_inner" @click="goSearch"><i class="el-icon-share"></i>emission Search</button>-->
+          <img src="../assets/y_admin_3.png" alt=""/>
+        </div>
+      </button>
     </div>
 
-    </div> 
+    </div>
 
 
 </template>
@@ -41,9 +51,9 @@ export default {
 
 <style>
 .mainStyle{
-  background: url("../assets/homg-bg.jpg")no-repeat;
+  /*background: url("../assets/homg-bg.jpg")no-repeat;*/
   background-size: cover;
-  min-height: 100vh;
+  /*min-height: 100vh;*/
   min-width: 100%;
   padding: 0 !important;
   margin: 0 !important;
@@ -93,7 +103,7 @@ export default {
   justify-content: center;
   text-align: center;
   color: white;
-  
+
 }
 .headerText h1{
   font-size: 80px;
@@ -122,7 +132,7 @@ export default {
   border: none;
   height: 180px;
 
-  
+
 
 }
 
@@ -166,7 +176,7 @@ export default {
 .function1-button:hover .y_pos {
   top: 0;
   transition: .5s;
-  
+
 }
 .function2-button:hover .y_pos {
   top: 0;
@@ -184,5 +194,12 @@ font-size: 18px;
 .buttonArea{
   margin-left: 10%;
   margin-top: 10%;
+}
+
+.y_pos img{
+  width: 220px;
+  height: 170px;
+  background-color: #ffffff;
+  cursor: pointer;
 }
 </style>
