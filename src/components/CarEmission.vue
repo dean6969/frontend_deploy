@@ -157,7 +157,7 @@ export default {
     },
     async fetchBrands() {
       try {
-        const response = await this.$http.get("https://backendtp23.onrender.com/mysql1");
+        const response = await this.$http.get("https://backendtp234.onrender.com/mysql1");
         console.log(response.data);
         this.brands = JSON.parse(JSON.stringify(response.data)).map(car => car.Make);
 
@@ -171,7 +171,7 @@ export default {
         if(this.selectedBrand){
             try {
         const response = await this.$http.get(
-          `https://backendtp23.onrender.com/carbon?message=${this.selectedBrand}`
+          `https://backendtp234.onrender.com/carbon?message=${this.selectedBrand}`
         );
         this.carbonData = JSON.parse(JSON.stringify(response.data)).map(car => car.CO2);
       } catch (error) {
