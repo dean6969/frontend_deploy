@@ -10,13 +10,13 @@
           <div class="emission-content">
             <br><br>
             <h3>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Three main harmful effects which are caused by carbon emissions per gram: 
-            </h3>  
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Three main harmful effects which are caused by carbon emissions per gram:
+            </h3>
             <p class="carText">
               In terms of the aspect of <span class="bold">climate change</span>, the United Nations stated that an increase of 1
               gram of carbon emissions can cause a global average temperature rise of about <span class="bold">0.00005</span>°C
               due to greenhouse gas emissions, also leading to worsening climate change.
-            </p>    
+            </p>
             <p class="carText">
               For the aspect of <span class="bold">Health Risks</span>: Some studies proposed that the impact of each gram of
               carbon emissions on human health including the release of carcinogens, air pollution, water
@@ -27,12 +27,12 @@
               According to the aspect of <span class="bold">Ecological Imbalance</span>: Each gram of carbon emissions places a
               negative impact on the ecosystem, such as disrupting the balance of forest ecosystems,
               ocean acidification etc…
-            </p> 
+            </p>
             <p class="carText">
               Reducing carbon emissions, adopting a low-carbon and environmentally friendly
               lifestyle and promoting the substantial environment are crucial.
 
-            </p>                                                                                                       
+            </p>
           </div>
         </div></el-col
       >
@@ -78,7 +78,7 @@
               <div class="text item"></div>
               <div class="text item">
                 <el-button type="success" round @click="submitForm('ruleForm')"
-                
+
                   >check</el-button
                 >
                 <el-button type="success" round @click="resetForm('ruleForm')">reset</el-button>
@@ -97,7 +97,7 @@
               </p>
             </div>
             <div>
-              <el-button type="success" round><a href="haha.html">Click here!</a></el-button>
+              <el-button type="success" round @click="hereClick">Click here!</el-button>
             </div>
             <div class="gif02Container">
               <img src="../assets/carGIF02.gif" alt="" class="gif02">
@@ -144,13 +144,17 @@ export default {
             // { required: true, message: 'input a number please', trigger: 'blur' },
             { validator: checkPositive, trigger: 'blur' }
           ],
-     }   
+     }
     };
   },
   mounted() {
     this.fetchBrands();
   },
   methods: {
+
+    hereClick(){
+      this.$router.push('/chickHere')
+    },
     async fetchBrands() {
       try {
         const response = await this.$http.get("https://backendtp23.onrender.com/mysql1");
@@ -176,7 +180,7 @@ export default {
         }else {
             return
         }
-      
+
     },
     calculateTotal() {
       let total = this.carbonData * this.ruleForm.distance * 0.00005;
@@ -196,7 +200,7 @@ export default {
         }else{
             return this.$message.error("carBrand can't be empty");
         }
-        
+
 
       },
       clearBrand(){
@@ -208,9 +212,9 @@ export default {
         this.total = ''
 
       }
-    
+
   },
-  
+
 };
 </script>
 
@@ -266,12 +270,12 @@ export default {
   transition: transform 0.5s ease;
 }
 .carHeader:hover {
-    transform: scale(1.1); 
-    transition: transform 0.5s ease; 
+    transform: scale(1.1);
+    transition: transform 0.5s ease;
 }
 .askText{
   color: #7ec9d3;
-  
+
 }
 .gif02{
   width: 195px;
@@ -286,5 +290,12 @@ a{
   text-decoration: none;
   color: white;
 }
+
+@media screen and (max-width: 1680px) {
+  ::v-deep .el-button{
+    width: 100px;
+  }
+}
+
 
 </style>

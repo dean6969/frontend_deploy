@@ -8,20 +8,35 @@
     </div>
     <div class="buttonArea">
     <button class="function1-button" style=" position: relative;overflow: hidden">
-      <p>Know the temperature rise you're causing</p>
-         <div class="y_pos">
-          <button class="button_inner" @click="goCarEmission"><i class="el-icon-share"></i>emission calculator</button>
+<!--      <p></p>-->
+      <img class="y_img" src="../assets/y_admin_1.png" alt=""/>
+         <div class="y_pos"  @click="goCarEmission">
+           Know the temperature rise you're causing
+<!--          <button class="button_inner" @click="goCarEmission"><i class="el-icon-share"></i>emission calculator</button>-->
          </div>
     </button>
     <button class="function1-button" style=" position: relative;overflow: hidden">
-      <p>know the Emission your car made</p>
-         <div class="y_pos">
-          <button class="button_inner" @click="goSearch"><i class="el-icon-share"></i>emission Search</button>
+      <img class="y_img" src="../assets/y_admin_2.png" alt=""/>
+         <div class="y_pos" @click="goSearch">
+<!--          <button class="button_inner" @click="goSearch"><i class="el-icon-share"></i>emission Search</button>-->
+           know the Emission your car made
+
          </div>
     </button>
+
+      <button class="function1-button" style=" position: relative;overflow: hidden" @click="hereClick">
+        <img class="y_img" src="../assets/y_admin_3.png" alt=""/>
+<!--        <a href="haha.html">-->
+          <div class="y_pos">
+            <!--          <button class="button_inner" @click="goSearch"><i class="el-icon-share"></i>emission Search</button>-->
+            know the Emission your car made
+          </div>
+<!--        </a>-->
+
+      </button>
     </div>
 
-    </div> 
+    </div>
 
 
 </template>
@@ -34,16 +49,20 @@ export default {
     },
     goSearch() {
       this.$router.push("/search");
+    },
+    hereClick() {
+      this.$router.push("/chickHere");
     }
+
   },
 };
 </script>
 
 <style>
 .mainStyle{
-  background: url("../assets/homg-bg.jpg")no-repeat;
+  /*background: url("../assets/homg-bg.jpg")no-repeat;*/
   background-size: cover;
-  min-height: 100vh;
+  /*min-height: 100vh;*/
   min-width: 100%;
   padding: 0 !important;
   margin: 0 !important;
@@ -89,26 +108,29 @@ export default {
 
 }
 .headerText{
-  display: flex;
+  /*display: flex;*/
   justify-content: center;
   text-align: center;
   color: white;
-  
+
 }
 .headerText h1{
-  font-size: 80px;
-  margin-right: -200px;
-  margin-top: 7%;
+  font-size: 50px;
+  /*margin-right: -200px;*/
+  height: 0;
+  margin-top: 20px;
 }
 .headerText h3{
   font-size: 30px;
-  margin-top: 17%;
+  margin-top: 80px;
+  /*margin-right: -200px;*/
 }
 
 .y_pos {
   width: 100%;
   height: 372px;
   position: absolute;
+  color: #ffffff;
   /* background: rgba(20, 39, 54, .3); */
   border: none;
   /* border-radius: 20px; */
@@ -122,7 +144,7 @@ export default {
   border: none;
   height: 180px;
 
-  
+
 
 }
 
@@ -166,7 +188,7 @@ export default {
 .function1-button:hover .y_pos {
   top: 0;
   transition: .5s;
-  
+
 }
 .function2-button:hover .y_pos {
   top: 0;
@@ -181,8 +203,24 @@ color: white;
 margin-top: -30px;
 font-size: 18px;
 }
+
+.y_pos{
+  width: 220px;
+  height: 170px;
+  font-size: 18px;
+  padding-top: 30px;
+  color: #ffffff;
+  background:rgba(20,39,54,1);
+}
 .buttonArea{
   margin-left: 10%;
-  margin-top: 10%;
+  margin-top: 20%;
+  margin-bottom: 30px;
+}
+
+.y_img{
+  width: 220px;
+  height: 170px;
+  cursor: pointer;
 }
 </style>

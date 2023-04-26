@@ -3,3 +3,12 @@ html,body,#app{
     margin: 0;
     padding: 0;
 }
+
+::v-deep .el-menu{
+    background-color: transparent!important;
+    margin-top: 0!important;
+    padding: 0 0!important;
+}
+::v-deep .el-menu .el-menu--horizontal{
+    background-color:#333333!important;
+}

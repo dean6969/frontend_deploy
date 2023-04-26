@@ -19,16 +19,23 @@
     <link rel="stylesheet" href="style.css" />
     <title>Python Flask Vuejs Mysql</title>
   </head>
-
   <body>
     <h2>Gasoline Car Carbon CO2 Emission Facts</h2>
-    
-      
+    <div class="selectBox" id="vuejscrudapp">
+      <div class="selector">
+        <select id="updateid">
+          <option value="">Select brand</option>
+          <option v-for="(item, i) in records" :key="item.id">
+            {{ item.Make }}
+          </option>
+        </select>
+      </div>
+
 
       <div
         class="chart-container"
-        style="position: relative; 
-        height: 60vh; width: 65vw"
+        style="position: relative;
+        height: 60vh; width: 100vw"
       >
         <canvas id="myChart" chart-click="ctrl.onClick"></canvas>
       </div>
@@ -39,24 +46,15 @@
        <p>3.Carpool or use bike-sharing. Carpooling with friends or colleagues, or renting bike-sharing services can reduce personal carbon emissions.</p>
        <p>4.Drive low-emission vehicles. Choose low-emission or zero-emission vehicles such as hybrid, electric, or hydrogen fuel cell vehicles.</p>
       </div>
-      <div class="selectBox" id="vuejscrudapp">
-        <div class="selector">
-          <select id="updateid">
-            <option value="">Select brand</option>
-            <option v-for="(item, i) in records" :key="item.id">
-              {{ item.Make }}
-            </option>
-          </select>
-        </div>
       <div class="pieChart">
         <!-- <label for="">Pie chart</label> -->
         <h2>Gasoline Car Carbon CO2 Emission Pie Chart</h2>
         <div id="chartdiv"></div>
       </div>
-      
-      
-      
-      
+
+
+
+
 
       <!-- <div id='myDiv'>Plotly chart will be drawn inside this DIV</div> -->
 
@@ -101,7 +99,7 @@
     <script src="//cdn.amcharts.com/lib/4/charts.js"></script>
     <script src="//cdn.amcharts.com/lib/4/plugins/sunburst.js"></script>
     <script src="//cdn.amcharts.com/lib/4/themes/animated.js"></script>
-        
+
     <script>
       var app = new Vue({
         el: "#vuejscrudapp",
@@ -123,7 +121,6 @@
                 // console.log(this.records);
 
                 this.file = JSON.parse(JSON.stringify(this.records));
-
                 labels = [];
                 data = [];
 
@@ -206,7 +203,7 @@
                     console.log(this.records1)
 
                   // cons
-                    
+
 
                     parents = []
                     childs = []
@@ -252,14 +249,14 @@
                     //       "age": "77"
                     //     }];
 
-                        result_sun = 
+                        result_sun =
                           _.chain(this.records1)
                             // Group the elements of Array based on `color` property
                             .groupBy("Vehicle Class")
                             // `key` is group's name (color), `value` is the array of objects
                             .map((value, key) => ({ Model: key, children: value }))
                             .value()
-                        
+
 
 
                         am4core.ready(function() {
@@ -321,9 +318,9 @@
                     level0SeriesTemplate.hiddenState.properties.endAngle = -90;
                                         });
 
-                    
 
-                    
+
+
                     });
 
                     console.log(document.getElementById("myChart"))
@@ -331,11 +328,11 @@
 
 
                     // sunburst graph
-                    
-                    
 
 
-                  
+
+
+
                 };
 
 
@@ -371,7 +368,7 @@
           this.getRecords();
         },
       });
-      
+
     </script>
   </body>
 </html>
