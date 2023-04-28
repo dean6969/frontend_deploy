@@ -1,122 +1,146 @@
 <template>
+  <div class="aMains">
+    <el-container class="home-container">
+      <!-- back to the top -->
+      <el-backtop></el-backtop>
+      <!-- header -->
+      <el-header>
+        <!-- logo -->
+        <el-row :gutter="20">
+          <el-col :span="3">
+            <div class="grid-content bg-purple">
+              <img src="../assets/y_logo.png" alt="" class="logo" />
+            </div>
+          </el-col>
+          <el-col :span="3">
+            <div class="grid-content bg-purple">
+              <p class="projectName">Daily Carbon Netutrality</p>
+            </div>
+          </el-col>
+          <el-col :span="18">
+            <div class="grid-content bg-purple">
+              <el-menu
+                class="el-menu-nav"
+                mode="horizontal"
+                text-color="#fff"
+                background-color="transparent"
+                active-text-color="white"
+                router
+              >
+                <el-menu-item :index="'/' + 'main'" @click="fn">
+                  <!--                <i class="el-icon-loading"></i>-->
+                  Homepage</el-menu-item
+                >
 
-  <el-container class="home-container">
-    <!-- back to the top -->
-    <el-backtop></el-backtop>
-    <!-- header -->
-    <el-header>
-      <!-- logo -->
-      <el-row :gutter="20">
-        <el-col :span="3"
-        >
-          <div class="grid-content bg-purple">
+                <el-menu-item class="y_menu_show" style="position:relative;">
+                  Car emission
+                  <div class="y_menu_ul">
+                    <div @click="EmissionClick">Emission caculator</div>
+                    <div @click="searchClick">Emission search</div>
+                    <div @click="chickHere">Car emission facts</div>
+                  </div>
+                </el-menu-item>
+                <el-menu-item @click="fnEvent">
+                  <!--                <i class="el-icon-loading"></i>-->
+                  Carbon emission trend</el-menu-item
+                >
+                <el-menu-item>
+                  <!--                <i class="el-icon-loading"></i>-->
+                  Co2 Quiz</el-menu-item
+                >
+              </el-menu>
+            </div>
+          </el-col>
+        </el-row>
 
-            <img src="../assets/y_logo.png" alt="" class="logo">
-          </div>
-        </el-col
+        <!-- navigation -->
+      </el-header>
+      <!-- body -->
+      <el-container>
+        <!-- main -->
+        <el-main>
+          <router-view></router-view>
+        </el-main>
+        <div v-if="isShow" class="mains" style="width:100%; height:3500px;">
+          <iframe
+            src="./static/haha/haha.html"
+            name="obj"
+            frameborder="0"
+            allowtransparency="yes"
+            scrolling="no"
+            style="width:100%; height: 100%;"
+          ></iframe>
+        </div>
+        <div
+          v-else-if="isShows"
+          class="mains"
+          style="width:100%; height:1200px;"
         >
-        <el-col :span="3"
-        >
-          <div class="grid-content bg-purple">
-            <p class="projectName">Daily Carbon Netutrality</p>
-          </div>
-        </el-col
-        >
-        <el-col :span="18"
-        >
-          <div class="grid-content bg-purple">
-            <el-menu class="el-menu-nav"
-                     mode="horizontal"
-                     text-color="#fff"
-                     background-color="transparent"
-                     active-text-color="white"
-                     router
-            >
-              <el-menu-item :index="'/'+'main'">
-<!--                <i class="el-icon-loading"></i>-->
-                Homepage</el-menu-item>
-              <!--                <el-submenu  :index="'/'+'daily'">-->
-              <!--                  <template slot="title">Daily life</template>-->
-              <!--                  <el-menu-item :index="'/'+'daily'">Daily life</el-menu-item>-->
-              <!--                  <el-menu-item >选项2</el-menu-item>-->
-              <!--                  <el-menu-item >选项3</el-menu-item>-->
-              <!--                </el-submenu>-->
-              <!--                <el-menu-item>Damage</el-menu-item>-->
-              <!-- <el-submenu  :index="'/'+'carEmission'"> -->
-              <!-- <template slot="title">car emission</template> -->
-<!--              <el-submenu :index="'/'+'carEmission'" class="y_menu_flex">-->
-<!--                <template slot="title">Car emission</template>-->
-<!--                <el-menu-item :index="'/'+'carEmission'">Emission caculator</el-menu-item>-->
-<!--                <el-menu-item :index="'/'+'search'">Emission search</el-menu-item>-->
-<!--                <el-menu-item><a href="haha.html">Car emission facts</a></el-menu-item>-->
-<!--              </el-submenu>-->
-              <el-menu-item class="y_menu_show" style="position:relative;">
-                Car emission
-                <div class="y_menu_ul">
-                                  <div @click="EmissionClick">Emission caculator</div>
-                                  <div @click="searchClick">Emission search</div>
-                                  <div @click="chickHere">Car emission facts</div>
-                </div>
-              </el-menu-item>
-              <!--                <el-menu-item :index="'/'+'carEmission'">Emission Caculator</el-menu-item>-->
-              <!--                <el-menu-item :index="'/'+'search'">Emission Search</el-menu-item>-->
-              <!--                <el-menu-item ><a href="haha.html">Car Emission Facts</a></el-menu-item>-->
-              <!-- </el-submenu> -->
-              <!-- <el-menu-item>About Us</el-menu-item> -->
-            </el-menu>
-          </div>
-        </el-col
-        >
-      </el-row>
-
-      <!-- navigation -->
-    </el-header>
-    <!-- body -->
-    <el-container>
-      <!-- main -->
-      <el-main>
-        <router-view></router-view>
-      </el-main>
-      <!-- footer -->
-      <el-footer style="height: 300px">
-        <ul class="y_footer">
-          <li><img src="src/assets/y_logo.png"/><span>We work in threatened and degraded tropical forests and landscapes to create locally-led reforestation projects</span></li>
-          <li><img src="src/assets/y_logo.png"/><span>We work in threatened and degraded tropical forests and landscapes to create locally-led reforestation projects</span></li>
-          <li><img src="src/assets/y_logo.png"/><span>We work in threatened and degraded tropical forests and landscapes to create locally-led reforestation projects</span></li>
-          <li><img src="src/assets/y_logo.png"/><span>We work in threatened and degraded tropical forests and landscapes to create locally-led reforestation projects</span></li>
-          <li><img src="src/assets/y_logo.png"/><span>We work in threatened and degraded tropical forests and landscapes to create locally-led reforestation projects</span></li>
-          <li><img src="src/assets/y_logo.png"/><span>We work in threatened and degraded tropical forests and landscapes to create locally-led reforestation projects</span></li>
-          <li><img src="src/assets/y_logo.png"/><span>We work in threatened and degraded tropical forests and landscapes to create locally-led reforestation projects</span></li>
-        </ul>
-
-      </el-footer>
+          <iframe
+            src="./static/haha/map1(2).html"
+            name="obj"
+            frameborder="0"
+            allowtransparency="yes"
+            scrolling="no"
+            style="width:100%; height: 100%;"
+          ></iframe>
+        </div>
+      </el-container>
     </el-container>
-  </el-container>
+  </div>
 </template>
 
 <script>
 export default {
+  data () {
+    return {
+      isShow: false,
+      isShows: false
+    }
+  },
   methods: {
-    gotoMain() {
-      this.$router.push('/main');
+    fnEvent () {
+      this.isShow = false
+      this.isShows = true
+    },
+    fn () {
+      this.isShow = false
+      this.isShows = false
+    },
+    gotoMain () {
+      this.$router.push('/main')
+      this.isShow = false
+      this.isShows = false
     },
 
-    EmissionClick(){
-      this.$router.push('/carEmission');
+    EmissionClick () {
+      this.$router.push('/carEmission')
+      this.isShow = false
+      this.isShows = false
     },
     //搜索跳转
-    searchClick(){
-      this.$router.push('/search');
+    searchClick () {
+      this.$router.push('/search')
+      this.isShow = false
+      this.isShows = false
     },
-    chickHere(){
-      this.$router.push('/chickHere');
+    chickHere () {
+      // this.$router.push('/chickHere');
+      this.isShow = true
+      this.isShows = false
     }
   }
-};
+}
 </script>
 
 <style scoped>
-
+.aMains {
+  position: relative;
+}
+.mains {
+  position: absolute;
+  top: 60px;
+}
 .home-container {
   height: 100%;
 }
@@ -128,15 +152,14 @@ export default {
   margin-left: 60px;
   cursor: pointer;
 }
-.el-submenu{
+.el-submenu {
   margin: 0;
   padding: 0 !important;
 }
 
-
 .el-header {
   width: 100%;
-  background:rgba(20,39,54,0.3);
+  background: rgba(20, 39, 54, 0.3);
   /*background-color: #b7d07a;*/
 }
 .el-aside {
@@ -182,7 +205,7 @@ export default {
   /* word-break: break-all; */
   word-wrap: break-word;
 }
-.el-footer{
+.el-footer {
   height: 10%;
   background-color: #b7d07a;
   color: #fff;
@@ -190,81 +213,72 @@ export default {
   justify-content: center;
   align-items: center;
 }
-.el-icon-loading{
+.el-icon-loading {
   font-size: 18px;
   color: red !important;
 }
-.projectName{
+.projectName {
   color: #fff;
 }
 
-
-
-
-::v-deep  .bg-purple .el-menu-nav{
-  border-color: transparent!important;
+::v-deep .bg-purple .el-menu-nav {
+  border-color: transparent !important;
 }
-::v-deep .el-menu-nav{
-  border-bottom: none!important;
+::v-deep .el-menu-nav {
+  border-bottom: none !important;
 }
 
-a{
+a {
   text-decoration: none;
   color: white;
 }
 
-::v-deep .el-menu-nav .el-menu--popup{
-  padding: 0 0!important;
+::v-deep .el-menu-nav .el-menu--popup {
+  padding: 0 0 !important;
 }
 
-::v-deep .el-menu-nav .el-menu--popup-bottom-start{
-  margin-top: 0!important;
+::v-deep .el-menu-nav .el-menu--popup-bottom-start {
+  margin-top: 0 !important;
 }
 
-
-
-.y_menu_ul{
+.y_menu_ul {
   list-style: none;
   position: absolute;
   left: 0;
   z-index: 9999999;
   /*padding: 0 10px;*/
   display: none;
-
 }
 
-.y_menu_ul div{
+.y_menu_ul div {
   padding: 0 10px;
-  background:rgba(51,51,51,0.5);
+  background: rgba(51, 51, 51, 0.5);
 }
 
-.y_menu_show:hover .y_menu_ul{
+.y_menu_show:hover .y_menu_ul {
   display: block;
 }
 
-.y_menu_ul div{
+.y_menu_ul div {
   width: 100%;
   text-align: center;
   height: 35px;
   line-height: 35px;
 }
 
-.y_menu_ul div:hover{
+.y_menu_ul div:hover {
   /*background: rgba(204, 204, 204, .5);*/
   color: #788b2b;
 }
 
-.y_footer{
- max-width: 1140px;
+.y_footer {
+  max-width: 1140px;
   margin: auto;
-
 }
 
-.y_footer   li{
+.y_footer li {
   width: 100%;
   display: flex;
   align-items: center;
 }
-
-
 </style>

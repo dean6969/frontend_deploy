@@ -63,7 +63,7 @@
       },
       async getTableData(){
         try {
-        const response = await this.$http.get("https://backendtp234.onrender.com/mysql");
+        const response = await this.$http.get("https://backendtp23.onrender.com/mysql");
         
         // this.tableData.Make= JSON.parse(JSON.stringify(response.data)).map(car => car.Make);
         this.tableData= JSON.parse(JSON.stringify(response.data)).map(car => car);

@@ -213,7 +213,7 @@ font-size: 18px;
   background:rgba(20,39,54,1);
 }
 .buttonArea{
-  margin-left: 10%;
+  margin-left: 25%;
   margin-top: 20%;
   margin-bottom: 30px;
 }
