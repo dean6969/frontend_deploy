@@ -8,7 +8,7 @@ import locale from 'element-ui/lib/locale/lang/en'
 import './assets/global.css'
 
 Vue.use(ElementUI, { locale })
-axios.defaults.baseURL = 'https://backendtp23.onrender.com'
+axios.defaults.baseURL = 'https://backendtp234.onrender.com'
 
 Vue.prototype.$http = axios
 Vue.config.productionTip = false

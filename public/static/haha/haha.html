@@ -112,7 +112,7 @@
         methods: {
           getRecords() {
             axios({
-              url: "https://backendtp23.onrender.com/mysql1",
+              url: "https://backendtp234.onrender.com/mysql1",
               method: "get",
             })
               .then((res) => {
@@ -195,7 +195,7 @@
                   this.message = box.value;
 
                   axios({
-                    url: `https://backendtp23.onrender.com/search?message=${this.message}`,
+                    url: `https://backendtp234.onrender.com/search?message=${this.message}`,
                     method: "get",
                   }).then((res) => {
                     this.records1 = res.data;
