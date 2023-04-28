@@ -44,10 +44,8 @@
                   <!--                <i class="el-icon-loading"></i>-->
                   Carbon emission trend</el-menu-item
                 >
-                <el-menu-item>
-                  <!--                <i class="el-icon-loading"></i>-->
-                  Co2 Quiz</el-menu-item
-                >
+
+                <el-menu-item @click="quizClick"> Co2 Quiz</el-menu-item>
               </el-menu>
             </div>
           </el-col>
@@ -61,7 +59,7 @@
         <el-main>
           <router-view></router-view>
         </el-main>
-        <div v-if="isShow" class="mains" style="width:100%; height:3500px;">
+        <div v-if="isShow" class="mains" style="width:100%; height:3500px; z-index: 999;">
           <iframe
             src="./static/haha/haha.html"
             name="obj"
@@ -72,9 +70,9 @@
           ></iframe>
         </div>
         <div
-          v-else-if="isShows"
+          v-else-if="$store.state.isShows"
           class="mains"
-          style="width:100%; height:1200px;"
+          style="width:100%; height:1200px; z-index: 999;"
         >
           <iframe
             src="./static/haha/map1(2).html"
@@ -85,49 +83,67 @@
             style="width:100%; height: 100%;"
           ></iframe>
         </div>
+   <div v-if="$store.state.toShow" class="button"><div class="mains_top"> @2023 CarbonCutterVic. &nbsp;&nbsp;Design &nbsp; by &nbsp; Tp23.</div></div>
       </el-container>
     </el-container>
   </div>
 </template>
 
 <script>
+import main from './Main'
 export default {
   data () {
     return {
       isShow: false,
-      isShows: false
+      // isShows: false
     }
+  },
+  components: {
+     main
   },
   methods: {
     fnEvent () {
       this.isShow = false
-      this.isShows = true
+       this.$store.commit('savePath',true)
+       this.$store.commit('saveToShow',false)
+      // this.isShows = true
     },
     fn () {
       this.isShow = false
-      this.isShows = false
+        this.$store.commit('savePath',false)
+        this.$store.commit('saveToShow',true)
     },
     gotoMain () {
       this.$router.push('/main')
       this.isShow = false
-      this.isShows = false
+      this.$store.commit('savePath', false)
+        this.$store.commit('saveToShow',false)
     },
 
     EmissionClick () {
       this.$router.push('/carEmission')
       this.isShow = false
-      this.isShows = false
+      this.$store.commit('savePath', false)
+        this.$store.commit('saveToShow',false)
     },
-    //搜索跳转
     searchClick () {
       this.$router.push('/search')
       this.isShow = false
-      this.isShows = false
+      this.$store.commit('savePath', false)
+        this.$store.commit('saveToShow',false)
     },
     chickHere () {
       // this.$router.push('/chickHere');
       this.isShow = true
-      this.isShows = false
+      this.$store.commit('savePath', false)
+        this.$store.commit('saveToShow',false)
+    },
+    quizClick () {
+      this.$router.push('/quiz')
+      this.isShow = false
+      // this.isShows = false
+      this.$store.commit('savePath', false)
+       this.$store.commit('saveToShow',false)
     }
   }
 }
@@ -136,6 +152,19 @@ export default {
 <style scoped>
 .aMains {
   position: relative;
+}
+.button{
+   position: absolute;
+   height:20px;
+   top: calc(100vh - 20px);
+   width: 100%;
+   color: #fff;
+   background: #77ae5d;
+  
+}
+.mains_top{
+   position: absolute;
+left: 42%;
 }
 .mains {
   position: absolute;

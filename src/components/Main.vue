@@ -7,59 +7,113 @@
       <h3>Protect Our Earth, Reduce Carbon Pollution!</h3>
     </div>
     <div class="buttonArea">
-    <button class="function1-button" style=" position: relative;overflow: hidden">
-<!--      <p></p>-->
-      <img class="y_img" src="../assets/y_admin_1.png" alt=""/>
-         <div class="y_pos"  @click="goCarEmission">
-           Know the temperature rise you're causing
-<!--          <button class="button_inner" @click="goCarEmission"><i class="el-icon-share"></i>emission calculator</button>-->
-         </div>
-    </button>
-    <button class="function1-button" style=" position: relative;overflow: hidden">
-      <img class="y_img" src="../assets/y_admin_2.png" alt=""/>
-         <div class="y_pos" @click="goSearch">
-<!--          <button class="button_inner" @click="goSearch"><i class="el-icon-share"></i>emission Search</button>-->
-           know the Emission your car made
-
-         </div>
-    </button>
-
-      <button class="function1-button" style=" position: relative;overflow: hidden" @click="hereClick">
-        <img class="y_img" src="../assets/y_admin_3.png" alt=""/>
-<!--        <a href="haha.html">-->
-          <div class="y_pos">
-            <!--          <button class="button_inner" @click="goSearch"><i class="el-icon-share"></i>emission Search</button>-->
-            know the Emission your car made
+      <button
+        class="function1-button"
+        style=" position: relative;overflow: hidden"
+      >
+        <img class="y_img" src="../assets/y_admin_1.png" alt="" />
+        <div class="y_pos" @click="goCarEmission">
+         Calculate your emissions: quick, easy, accurate, eco-friendly tool.
+          <div style="margin-top:10px;  ">
+            <el-button style=" background:#7c8a35; color: aliceblue;"
+              >Find out more</el-button
+            >
           </div>
-<!--        </a>-->
+        </div>
+      </button>
+      <button
+        class="function1-button"
+        style=" position: relative;overflow: hidden"
+      >
+        <img class="y_img" src="../assets/y_admin_2.png" alt="" />
+        <div class="y_pos" @click="goSearch">
+           Find out your fossile car carbon emission
+          <div style="margin-top:10px;  ">
+            <el-button style=" background:#7c8a35; color: aliceblue;"
+              >Find out more</el-button
+            >
+          </div>
+        </div>
+      </button>
 
+      <button
+        class="function1-button"
+        style=" position: relative;overflow: hidden"
+        @click="hereClick"
+      >
+        <img class="y_img" src="../assets/y_admin_3.png" alt="" />
+        <div class="y_pos">
+         Discover vehicle emissions: impact, stats, comparisons, greener choices.
+          <div style="margin-top:10px;  ">
+            <el-button style=" background:#7c8a35; color: aliceblue;"
+              >Find out more</el-button
+            >
+          </div>
+        </div>
+      </button>
+      <button
+        class="function1-button"
+        style=" position: relative;overflow: hidden"
+        @click="Carbon"
+      >
+        <img class="y_img" src="../assets/y_admin_4.png" alt="" />
+        <div class="y_pos">
+         Discover Australia carbon emission footprint 
+          <div style="margin-top:10px;  ">
+            <el-button style=" background:#7c8a35; color: aliceblue;"
+              >Find out more</el-button
+            >
+          </div>
+        </div>    
+      </button>
+      <button
+        class="function1-button"
+        style=" position: relative;overflow: hidden"
+        @click="QuClick"
+      >
+        <img class="y_img" src="../assets/y_admin_5.png" alt="" />
+        <div class="y_pos">
+         Test your Carbon emission awareness here
+          <div style="margin-top:10px;  ">
+            <el-button style=" background:#7c8a35; color: aliceblue;"
+              >Find out more</el-button
+            >
+          </div>
+        </div>    
       </button>
     </div>
-
-    </div>
-
-
+  </div>
 </template>
 
 <script>
 export default {
   methods: {
-    goCarEmission() {
-      this.$router.push("/carEmission");
+    goCarEmission () {
+      this.$router.push('/carEmission')
+       this.$store.commit('saveToShow',false)
     },
-    goSearch() {
-      this.$router.push("/search");
+    goSearch () {
+      this.$router.push('/search')
+       this.$store.commit('saveToShow',false)
     },
-    hereClick() {
-      this.$router.push("/chickHere");
+    hereClick () {
+      this.$router.push('/chickHere')
+       this.$store.commit('saveToShow',false)
+    },
+    Carbon() {
+      this.$store.commit('savePath', true)
+        this.$store.commit('saveToShow',false)
+    },
+    QuClick() {
+      this.$router.push('/quiz')
+        this.$store.commit('saveToShow',false)
     }
-
-  },
-};
+  }
+}
 </script>
 
 <style>
-.mainStyle{
+.mainStyle {
   /*background: url("../assets/homg-bg.jpg")no-repeat;*/
   background-size: cover;
   /*min-height: 100vh;*/
@@ -78,7 +132,6 @@ export default {
   height: 220px;
   margin: 0 15%;
 }
-
 
 .function-row {
   margin-top: 50px;
@@ -105,22 +158,20 @@ export default {
   white-space: normal;
   word-wrap: break-word;
   height: 200px;
-
 }
-.headerText{
+.headerText {
   /*display: flex;*/
   justify-content: center;
   text-align: center;
   color: white;
-
 }
-.headerText h1{
+.headerText h1 {
   font-size: 50px;
   /*margin-right: -200px;*/
   height: 0;
   margin-top: 20px;
 }
-.headerText h3{
+.headerText h3 {
   font-size: 30px;
   margin-top: 80px;
   /*margin-right: -200px;*/
@@ -143,9 +194,6 @@ export default {
   width: 250px;
   border: none;
   height: 180px;
-
-
-
 }
 
 .funcDesc {
@@ -156,7 +204,7 @@ export default {
   width: 250px;
   height: 230px;
 }
-.button_inner{
+.button_inner {
   color: white;
   background-color: transparent;
   border: none;
@@ -164,18 +212,18 @@ export default {
   margin: 40% auto;
   cursor: pointer;
 }
-.button_inner:hover{
+.button_inner:hover {
   color: #e0e0e0;
 }
-.function1-button{
+.function1-button {
   width: 220px;
   border: none;
   /* box-sizing: content-box; */
   padding: 0;
   height: 170px;
   /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
-  margin-right: 80px;
-  background: rgba(20, 39, 54, .3);
+  margin-right: 60px;
+  background: rgba(20, 39, 54, 0.3);
   margin-top: -20%;
 }
 
@@ -184,41 +232,41 @@ export default {
   overflow: hidden;
 }
 
-
 .function1-button:hover .y_pos {
   top: 0;
-  transition: .5s;
-
+  transition: 0.5s;
 }
 .function2-button:hover .y_pos {
   top: 0;
-  transition: .5s;
+  transition: 0.5s;
 }
 .function3-button:hover .y_pos {
   top: 0;
-  transition: .5s;
+  transition: 0.5s;
 }
-.function1-button p{
-color: white;
-margin-top: -30px;
-font-size: 18px;
+.function1-button p {
+  color: white;
+  margin-top: -30px;
+  font-size: 18px;
 }
 
-.y_pos{
+.y_pos {
   width: 220px;
   height: 170px;
-  font-size: 18px;
+  font-size: 16px;
   padding-top: 30px;
-  color: #ffffff;
-  background:rgba(20,39,54,1);
+  color: white;
+  font-weight: 300;
+  /* background:rgba(20,39,54,1); */
+  background: #7c8a35;
 }
-.buttonArea{
-  margin-left: 25%;
+.buttonArea {
+  margin-left: 5%;
   margin-top: 20%;
   margin-bottom: 30px;
 }
 
-.y_img{
+.y_img {
   width: 220px;
   height: 170px;
   cursor: pointer;

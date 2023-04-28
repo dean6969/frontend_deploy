@@ -5,6 +5,7 @@ import Main from '../components/Main.vue'
 import CarEmission from '../components/CarEmission.vue'
 import chickHere from '../components/chickHere.vue'
 import Search from '../components/Search.vue'
+import Quiz from '../components/Quiz.vue'
 
 
 Vue.use(Router)
@@ -18,6 +19,7 @@ const router = new Router({
       {path:'/carEmission',component:CarEmission},
       {path:'/chickHere',component:chickHere},
       {path:'/search',component:Search},
+  {path: '/quiz',component:Quiz}
     ]
   },
 

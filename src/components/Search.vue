@@ -79,7 +79,10 @@
   }
 </script>
 
-<style>
+<style scoped>
+  ::v-deep .el-card__body,  .el-main{
+  padding: 0px;
+}
 .searchContent{
     background-color: #d2d1ed !important;
 }
