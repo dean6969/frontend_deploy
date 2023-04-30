@@ -1,10 +1,29 @@
 <template>
-  <div class="quizPage">
-    <!-- <el-breadcrumb separator="/">
+  <div>
+    <el-breadcrumb separator="/">
       <el-breadcrumb-item :to="{ path: '/' }">Homepage</el-breadcrumb-item>
-      <el-breadcrumb-item>Emission qiuz</el-breadcrumb-item>
-    </el-breadcrumb> -->
+      <el-breadcrumb-item>Emission survey</el-breadcrumb-item>
+    </el-breadcrumb>
     <div class="quiz">
+      <div class="titleArea">
+        <h2>Do you care about low-carbon life?</h2>
+      </div>
+      <p class="carbonIntro">
+        <strong>Carbon emissions</strong> refer to the release of carbon dioxide
+        gas into the atmosphere as a result of human activities. The primary
+        sources of carbon emissions include the burning of fossil fuels,
+        industrial production, transportation, and land use changes. Excessive
+        carbon emissions can result in an increase in atmospheric carbon
+        dioxide, which in turn can cause climate change and global warming,
+        posing a significant threat to humans and the environment.
+      </p>
+      <p class="carbonIntro">
+        <em
+          ><strong
+            >The following is a small survey about your daily life.</strong
+          ></em
+        >
+      </p>
       <!-- steps -->
       <el-steps
         :active="parseInt(activeName) - 1"
@@ -164,7 +183,7 @@
                   environmental protection into your daily life. It is
                   recommended to maintain the existing good habits and continue
                   to learn and understand some life tips for protecting the
-                  environment, includiing actively browse environmental
+                  environment, including actively browse environmental
                   protection information and put it into action and etc.
                 </p>
               </div>
@@ -195,11 +214,11 @@
           </el-tab-pane>
         </el-tabs>
       </div>
-      <el-button type="success" class="nextButton" @click="handleNext">{{
+      <el-button type="info" class="nextButton" @click="handleNext">{{
         Next
       }}</el-button>
     </div>
-    <div class="picContent">
+    <!-- <div class="picContent">
       <el-row :gutter="20">
         <el-col :span="12"
           ><div class="grid-content bg-purple">
@@ -208,25 +227,25 @@
         <el-col :span="12"
           ><div class="grid-content bg-purple-light">
             <p>
-              As a low-cost and low-cost way of life, low-carbon life also represents a healthier, more natural and safer life.
+              As a low-cost and low-cost way of life, low-carbon life also
+              represents a healthier, more natural and safer life.
             </p>
-           
-            </div
-        ></el-col>
+          </div></el-col
+        >
       </el-row>
       <el-row :gutter="20">
         <el-col :span="12"
           ><div class="grid-content bg-purple">
             <p>
-              First of all, low-carbon life helps to establish a new outlook on life and consumption, which aims to reduce carbon emissions and promote the harmonious development of man and nature.
+              First of all, low-carbon life helps to establish a new outlook on
+              life and consumption, which aims to reduce carbon emissions and
+              promote the harmonious development of man and nature.
             </p>
-            
-            </div
-        ></el-col>
+          </div></el-col
+        >
         <el-col :span="12"
           ><div class="grid-content bg-purple-light">
-            <img src="../assets/view02.jpg" alt="" />
-            </div
+            <img src="../assets/view02.jpg" alt="" /></div
         ></el-col>
       </el-row>
       <el-row :gutter="20">
@@ -237,26 +256,95 @@
         <el-col :span="12"
           ><div class="grid-content bg-purple-light">
             <p>
-              Second, low-carbon life can better coordinate economic and social development and protect the environment.
+              Second, low-carbon life can better coordinate economic and social
+              development and protect the environment.
             </p>
-            </div
-        ></el-col>
+          </div></el-col
+        >
       </el-row>
       <el-row :gutter="20">
         <el-col :span="12"
           ><div class="grid-content bg-purple">
             <p>
-              In addition, under the low-carbon economic model, the negative effects caused by the irrational use of energy can be avoided, and a new life with the theme of economic energy and green energy can be enjoyed.
+              In addition, under the low-carbon economic model, the negative
+              effects caused by the irrational use of energy can be avoided, and
+              a new life with the theme of economic energy and green energy can
+              be enjoyed.
             </p>
-            </div
-        ></el-col>
+          </div></el-col
+        >
         <el-col :span="12"
           ><div class="grid-content bg-purple-light">
-            <img src="../assets/view04.jpg" alt="" />
-            </div
+            <img src="../assets/view04.jpg" alt="" /></div
         ></el-col>
       </el-row>
+    </div> -->
+    <div class="suggestions">
+      <p>
+        <em
+          ><strong
+            >Regarding low-carbon life, we can give you some small
+            suggestions</strong
+          ></em
+        >
+      </p>
     </div>
+
+    <el-tabs type="border-card" class="suggestionContent">
+      <el-tab-pane label="Daily life">
+        <el-row :gutter="20">
+          <el-col :span="12"><div class="grid-content bg-purple">
+            <img src="../assets/daily.jpg" alt="">
+          </div></el-col>
+          <el-col :span="12"><div class="grid-content bg-purple">
+            <h4>Daily life suggestions</h4>
+            <p>
+            1.Reduce the use of disposable products such as plastic bags, straws, and water bottles.
+            <br>
+            2.Save energy by turning off lights and electronics when not in use.
+            <br>
+            3.Choose energy-efficient appliances and light bulbs.
+            <br>
+            4.Use reusable containers and utensils instead of disposable ones.
+            <br>
+            5.Practice recycling and composting to reduce waste.
+            <br>
+            </p>
+           
+          </div></el-col>
+        </el-row>
+      </el-tab-pane>
+      <el-tab-pane label="Transportation">
+        <el-row :gutter="20">
+          <el-col :span="12"><div class="grid-content bg-purple">
+            <img src="../assets/transportation.jpg" alt="">
+          </div></el-col>
+          <el-col :span="12"><div class="grid-content bg-purple">
+            <h4>Transportation suggestions</h4>
+            <p>
+            1.Use public transportation, such as buses or trains, instead of driving a car.
+            <br>
+            2.Walk or bike short distances instead of driving a car.
+            <br>
+            3.Use a carpooling service to share rides with others.
+            <br>
+            4.Consider purchasing an electric or hybrid vehicle if possible.
+            <br>
+            5.When driving, maintain a consistent speed and avoid sudden accelerations or braking.
+            <br>
+            </p>
+           
+          </div></el-col>
+        </el-row>
+      </el-tab-pane>
+    </el-tabs>
+    <el-dialog title="tip" :visible.sync="dialogVisible" width="50%">
+      <span>You answered all the questions!</span>
+      <span slot="footer">
+        <el-button @click="dialogVisible = false">Cancle</el-button>
+        <el-button type="primary" @click="dialogVisible = false">OK</el-button>
+      </span>
+    </el-dialog>
   </div>
 </template>
 
@@ -278,6 +366,7 @@ export default {
       optionList: [1, 2, 3, 4],
       radioObj: {},
       result: 0,
+      dialogVisible: false,
     };
   },
   methods: {
@@ -306,6 +395,7 @@ export default {
         }
       } else {
         this.activeName = "5";
+        this.dialogVisible = true;
       }
 
       // let value = "radio"+index
@@ -329,17 +419,14 @@ export default {
 </script>
 
 <style scoped>
-.quizPage{
-  background-color: #fff;
-}
-.grid-content p{
+.grid-content p {
   margin: 20% auto;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 1.2em;
   vertical-align: middle;
   font-weight: normal;
 }
-.picContent{
+.picContent {
   width: 1000px;
   margin: 5% auto;
 }
@@ -351,11 +438,16 @@ export default {
   font-size: 1em;
   vertical-align: middle;
   font-weight: normal;
-  
 }
-.picContent p:hover{
+.carbonIntro {
+  font-family: "Open Sans", sans-serif;
+  width: 90%;
+  text-align: justify;
+  margin: 20px auto;
+}
+.picContent p:hover {
   color: #666 !important;
-  cursor: pointer !important; 
+  cursor: pointer !important;
 }
 .textContent h3 {
   margin-top: 10px;
@@ -371,11 +463,64 @@ export default {
   /* height: 40px; */
   margin: 1% auto;
 }
+.quiz .titleArea {
+  background-image: url("../assets/surveyBG.jpg");
+  width: 100%;
+  height: 100px;
+  text-align: center;
+  justify-content: center;
+  /* transition: transform 0.5s ease;  */
+}
+
+.quiz .titleArea:hover h2 {
+  transform: scale(1.1);
+  transition: transform 0.5s ease;
+}
+.titleArea h2 {
+  color: white;
+  margin: 0 auto;
+  height: 100px;
+  line-height: 100px;
+  transition: transform 0.5s ease;
+}
 .quizContent {
   margin-top: 25px;
 }
+.el-tabs {
+  width: 65%;
+  margin: 0 auto;
+  height: 600px;
+  margin-bottom: 25px;
+}
 .el-row {
   margin-top: 5px;
+}
+.suggestions {
+  width: 65%;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+.suggestions p {
+  font-family: "Open Sans", sans-serif;
+  width: 90%;
+  text-align: justify;
+  margin: 20px auto;
+}
+.el-steps {
+  margin-top: 30px;
+}
+.suggestionContent img{
+ width: 100%;
+}
+.suggestionContent h4{
+  text-align: center;
+}
+.suggestionContent p{
+  font-family: "Open Sans", sans-serif;
+  width: 90%;
+  text-align: justify;
+  margin: 20px auto;
+  font-size: 16px;
 }
 .nextButton {
   margin-top: 20px;

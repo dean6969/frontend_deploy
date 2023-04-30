@@ -7,8 +7,6 @@ import axios from 'axios'
 import locale from 'element-ui/lib/locale/lang/en'
 import './assets/global.css'
 
-// 引入vuex-store
-import store from './store/index';
 Vue.use(ElementUI, { locale })
 axios.defaults.baseURL = 'https://backendtp234.onrender.com'
 
@@ -17,6 +15,5 @@ Vue.config.productionTip = false
 
 new Vue({
   router,
-  store,
   render: h => h(App)
 }).$mount('#app')

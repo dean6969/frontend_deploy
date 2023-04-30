@@ -1,8 +1,13 @@
 <template>
+
   <el-card class="searchContent">
+    <el-breadcrumb separator="/">
+      <el-breadcrumb-item :to="{ path: '/' }">Homepage</el-breadcrumb-item>
+      <el-breadcrumb-item>Emission Search</el-breadcrumb-item>
+    </el-breadcrumb>
     <div class="text item searchHeader">
-        <img src="../assets/car.gif" alt="" class="car_gif">
-      <h2 class="carHeader">Use our Search Function to Know Your Car !</h2>
+        <!-- <img src="../assets/car.gif" alt="" class="car_gif"> -->
+      <h2 class="carHeader">Use our Search Function to Know Your Car</h2>
       <!-- <div style="clear: both;"></div> -->
     </div>
     <div class="text item tableContent">
@@ -17,10 +22,6 @@
       label="Model"
       prop="Model">
     </el-table-column>
-    <!-- <el-table-column
-      label="Vehicle Class"
-      prop="date">
-    </el-table-column> -->
     <el-table-column
       label="CO2(g/km)"
       prop="CO2">
@@ -79,18 +80,19 @@
   }
 </script>
 
-<style scoped>
-  ::v-deep .el-card__body,  .el-main{
-  padding: 0px;
-}
+<style>
 .searchContent{
-    background-color: #d2d1ed !important;
+    /* background-color: #d2d1ed !important; */
+}
+.el-breadcrumb{
+  margin: 1% auto;
 }
 .searchHeader {
   height: 90px;
-  background-color: #8ecd94;
   overflow: hidden;
   /* text-align: center; */
+  background-image: url(../assets/surveyBG.jpg);
+  text-align: center;
 
 }
 .car_gif{

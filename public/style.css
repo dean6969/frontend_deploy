@@ -1,6 +1,6 @@
 body{
     margin-left: 10px;
-    background-color: #f2fbf2;
+    /* background-color: #f2fbf2; */
 }
 h2{
     text-align: center;
@@ -9,7 +9,7 @@ h2{
 }
 .chart-container{
   width: 60%;
-  margin-left: 15%;
+  margin-left: 10%;
   border: 2px #333;
   margin-top: 5%;
 }
@@ -20,7 +20,7 @@ h2{
 #myChart {
     /* position: absolute; */
     background-size: 50%;
-    margin-left: 30px;
+    left: 10px;
     /* transform: scale(2.2);  */
     
     
@@ -40,7 +40,7 @@ h2{
   margin: 50px auto;
 }
 .text-area{
-  margin-top: 500px;
+  margin-bottom: 500px;
   border: 2px solid #ccc;
   border-radius: 5px;
   padding: 20px;

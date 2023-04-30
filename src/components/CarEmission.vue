@@ -1,56 +1,50 @@
 <template>
   <div class="content">
+    <el-breadcrumb separator="/">
+      <el-breadcrumb-item :to="{ path: '/' }">Homepage</el-breadcrumb-item>
+      <el-breadcrumb-item>Emission Calculator</el-breadcrumb-item>
+    </el-breadcrumb>
     <div class="headerPic">
-      <img src="../assets/car.gif" alt="" class="car_gif" />
+      <!-- <img src="../assets/car.gif" alt="" class="car_gif"> -->
       <h2 class="carHeader">Try our green calculate for your vehicle</h2>
     </div>
     <el-row :gutter="0">
       <el-col :span="16"
         ><div class="grid-content bg-purple">
           <div class="emission-content">
-            <br /><br />
+            <br><br>
             <h3>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              Three main harmful effects which are caused by carbon emissions
-              per gram:
-            </h3>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Three main harmful effects caused by carbon emissions: 
+            </h3>  
             <p class="carText">
-              In terms of the aspect of
-              <span class="bold">climate change</span>, the United Nations
-              stated that an increase of 1 gram of carbon emissions can cause a
-              global average temperature rise of about
-              <span class="bold">0.00005</span>°C due to greenhouse gas
-              emissions, also leading to worsening climate change.
+              In terms of the aspect of <span class="bold">climate change</span>, the United Nations stated that an increase of 1
+              gram of carbon emissions can cause a global average temperature rise of about <span class="bold">0.00005</span>°C
+              due to greenhouse gas emissions, also leading to worsening climate change.
+            </p>    
+            <p class="carText">
+              For the aspect of <span class="bold">Health Risks</span>: Some studies proposed that the impact of each gram of
+              carbon emissions on human health including the release of carcinogens, air pollution, water
+              pollution and other common hazards. The number of premature deaths due to air pollution is
+              estimated to be as high as several million per year.
             </p>
             <p class="carText">
-              For the aspect of <span class="bold">Health Risks</span>: Some
-              studies proposed that the impact of each gram of carbon emissions
-              on human health including the release of carcinogens, air
-              pollution, water pollution and other common hazards. The number of
-              premature deaths due to air pollution is estimated to be as high
-              as several million per year.
-            </p>
+              According to the aspect of <span class="bold">Ecological Imbalance</span>: Each gram of carbon emissions places a
+              negative impact on the ecosystem, such as disrupting the balance of forest ecosystems,
+              ocean acidification etc…
+            </p> 
             <p class="carText">
-              According to the aspect of
-              <span class="bold">Ecological Imbalance</span>: Each gram of
-              carbon emissions places a negative impact on the ecosystem, such
-              as disrupting the balance of forest ecosystems, ocean
-              acidification etc…
-            </p>
-            <p class="carText">
-              Reducing carbon emissions, adopting a low-carbon and
-              environmentally friendly lifestyle and promoting the substantial
-              environment are crucial.
-            </p>
+              Reducing carbon emissions, adopting a low-carbon and environmentally friendly
+              lifestyle and promoting the substantial environment are crucial.
+
+            </p>                                                                                                       
           </div>
         </div></el-col
       >
       <el-col :span="8"
         ><div class="grid-content bg-purple">
           <el-card>
-            <el-tag effect="dark" type="success" class="cal_tag">
-              Carbon dioxide calculator
-            </el-tag>
+            <el-tag effect="dark" type="info" class="cal_tag"> Carbon dioxide calculator
+</el-tag>
             <el-form
               :model="ruleForm"
               :rules="rules"
@@ -58,17 +52,14 @@
               label-width="100px"
               class="demo-ruleForm"
             >
-              <el-form-item
-                label="Car Brand:"
-                :prop="(carBrand = selectedBrand)"
-              >
+              <el-form-item label="Car Brand:" :prop="carBrand=selectedBrand">
                 <el-select
                   v-model="selectedBrand"
                   filterable
                   placeholder="Select"
                   clearable
                   @change="fetchCarbonData"
-                  @clear="clearBrand"
+                  @clear = "clearBrand"
                 >
                   <el-option
                     v-for="brand in brands"
@@ -90,12 +81,11 @@
 
               <div class="text item"></div>
               <div class="text item">
-                <el-button type="success" round @click="submitForm('ruleForm')"
+                <el-button type="info" @click="submitForm('ruleForm')" class="checkButton"
+                
                   >check</el-button
                 >
-                <el-button type="success" round @click="resetForm('ruleForm')"
-                  >reset</el-button
-                >
+                <el-button type="info" @click="resetForm('ruleForm')" class="resetButton">reset</el-button>
               </div>
             </el-form>
 
@@ -103,154 +93,159 @@
               Your driving raises the global temperature by
               <el-tag type="danger" effect="dark">{{ total }}</el-tag> ℃
             </div>
-            <hr />
             <div>
               <p class="askText">
-                We are providing more data on vehicle carbon emissions. Want to
-                know?
+                <em>We are providing more data on vehicle carbon emissions.
+                Want to know?</em>
               </p>
             </div>
             <div>
-              <el-button class="hereClick" size="medium" type="success" round @click="hereClick"
-                >Click here!</el-button
-              >
+              <router-link to="/facts" exact>
+              <el-button type="info">Click here!</el-button>
+            </router-link>
             </div>
             <div class="gif02Container">
-              <img src="../assets/carGIF02.gif" alt="" class="gif02" />
+              <img src="../assets/carGIF02.gif" alt="" class="gif02">
             </div>
-          </el-card></div
-      ></el-col>
+          </el-card>
+        </div></el-col
+      >
     </el-row>
   </div>
 </template>
 
 <script>
 export default {
-  data () {
+  data() {
     var checkPositive = (rule, value, callback) => {
-      if (!value) {
-        return callback(new Error('input a number please'))
-      }
-      if (isNaN(value)) {
-        callback(new Error('your input should be a number'))
-      } else {
-        if (parseFloat(value) < 0) {
-          callback(new Error('positive number please'))
-        } else {
-          callback()
+        if (!value) {
+          return callback(new Error('input a number please'));
         }
-      }
-    }
+          if (isNaN(value)) {
+            callback(new Error('your input should be a number'));
+          } else {
+            if (parseFloat(value) < 0) {
+              callback(new Error('positive number please'));
+            } else {
+              callback();
+            }
+          }
+      };
     return {
       brands: [], // brand list
       selectedBrand: null, // brand
       carbonData: null, // carbon emission
-      //   distance: "",
-      total: '',
+    //   distance: "",
+      total: "",
       ruleForm: {
-        carBrand: '',
-        distance: ''
-      },
-      rules: {
+        carBrand:'',
+        distance:''
+        },
+     rules:{
         carBrand: [
-          { required: true, message: 'select a car brand', trigger: 'blur' }
-        ],
+            { required: true, message: 'select a car brand', trigger: 'blur' },
+          ],
         distance: [
-          // { required: true, message: 'input a number please', trigger: 'blur' },
-          { validator: checkPositive, trigger: 'blur' }
-        ]
-      }
-    }
+            // { required: true, message: 'input a number please', trigger: 'blur' },
+            { validator: checkPositive, trigger: 'blur' }
+          ],
+     }   
+    };
   },
-  mounted () {
-    this.fetchBrands()
+  mounted() {
+    this.fetchBrands();
   },
   methods: {
-    hereClick () {
-      this.$router.push('/chickHere')
-    },
-    async fetchBrands () {
+    async fetchBrands() {
       try {
-        const response = await this.$http.get(
-          'https://backendtp234.onrender.com/mysql1'
-        )
-        console.log(response.data)
-        this.brands = JSON.parse(JSON.stringify(response.data)).map(
-          car => car.Make
-        )
+        const response = await this.$http.get("https://backendtp234.onrender.com/mysql1");
+        console.log(response.data);
+        this.brands = JSON.parse(JSON.stringify(response.data)).map(car => car.Make);
 
-        console.log(this.brands)
+        console.log(this.brands);
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
     },
     // get CO2 emission
-    async fetchCarbonData () {
-      if (this.selectedBrand) {
-        try {
-          const response = await this.$http.get(
-            `https://backendtp234.onrender.com/carbon?message=${this.selectedBrand}`
-          )
-          this.carbonData = JSON.parse(JSON.stringify(response.data)).map(
-            car => car.CO2
-          )
-        } catch (error) {
-          return this.$message.error("can't get emission")
-        }
-      } else {
-        return
+    async fetchCarbonData() {
+        if(this.selectedBrand){
+            try {
+        const response = await this.$http.get(
+          `https://backendtp234.onrender.com/carbon?message=${this.selectedBrand}`
+        );
+        this.carbonData = JSON.parse(JSON.stringify(response.data)).map(car => car.CO2);
+      } catch (error) {
+        return this.$message.error("can't get emission");
       }
+        }else {
+            return
+        }
+      
     },
-    calculateTotal () {
-      let total = this.carbonData * this.ruleForm.distance * 0.00005
+    calculateTotal() {
+      let total = this.carbonData * this.ruleForm.distance * 0.00005;
       total = total.toFixed(4)
       this.total = total
     },
-    submitForm (formName) {
-      if (this.carBrand) {
-        this.$refs[formName].validate(valid => {
+    submitForm(formName) {
+        if(this.carBrand){
+            this.$refs[formName].validate((valid) => {
           if (valid) {
             this.calculateTotal()
           } else {
-            console.log('error submit!!')
-            return false
+            console.log('error submit!!');
+            return false;
           }
-        })
-      } else {
-        return this.$message.error("carBrand can't be empty")
+        });
+        }else{
+            return this.$message.error("carBrand can't be empty");
+        }
+        
+
+      },
+      clearBrand(){
+    this.selectedBrand = ''
+  },
+  resetForm(formName) {
+        this.$refs[formName].resetFields();
+        this.selectedBrand = ''
+        this.total = ''
+
       }
-    },
-    clearBrand () {
-      this.selectedBrand = ''
-    },
-    resetForm (formName) {
-      this.$refs[formName].resetFields()
-      this.selectedBrand = ''
-      this.total = ''
-    }
-  }
-}
+    
+  },
+  
+};
 </script>
 
 <style scoped>
-
-::v-deep .el-button--medium.is-round{
-  padding:10px 14px;
+.el-header {
+position: static !important;
+width: 100%;
+background-color: black !important;
+color: #fff;
 }
 .content {
   width: 73%;
   margin: 0 auto;
 }
+.el-breadcrumb{
+  margin: 1% auto;
+}
 .headerPic {
   height: 90px;
-  background-color: #8ecd94;
+  /* background-color: #8ecd94; */
   overflow: hidden;
+  background-image: url(../assets/surveyBG.jpg);
+  text-align: center;
+
 }
 .emission-content {
   height: 600px;
-  background-image: url(../assets/car_bg.png);
+  /* background-image: url(../assets/harmHomePage.jpg); */
   background-size: auto 100%;
-  color: white;
+  color: black;
   overflow: hidden;
 }
 .el-row {
@@ -265,35 +260,38 @@ export default {
 }
 .carText {
   margin: 20px;
+  font-family: "Open Sans", sans-serif;
 }
-.car_gif {
+.car_gif{
   width: 120px;
-  float: left;
-  margin-right: 20%;
+   float: left;
+   margin-right: 20%;
 }
 
-.bold {
+.bold{
   font-weight: bold;
-  color: blanchedalmond;
+  color: rgb(60, 26, 16);
 }
-.cal_tag {
+.cal_tag{
   margin-bottom: 8%;
   margin-left: 20%;
   font-size: 18px;
   text-align: center;
 }
-.carHeader {
+.carHeader{
   color: white;
   transition: transform 0.5s ease;
+
 }
 .carHeader:hover {
-  transform: scale(1.1);
-  transition: transform 0.5s ease;
+    transform: scale(1.1); 
+    transition: transform 0.5s ease; 
 }
-.askText {
-  color: #7ec9d3;
+.askText{
+  color: #383d3e;
+  
 }
-.gif02 {
+.gif02{
   width: 195px;
   display: block;
   margin-left: 100px;
@@ -302,14 +300,13 @@ export default {
 hr {
   border-color: green;
 }
-a {
+a{
   text-decoration: none;
   color: white;
 }
 
-@media screen and (max-width: 1680px) {
-  ::v-deep .el-button {
-    width: 100px;
-  }
+.resetButton,.checkButton{
+  width: 80px;
 }
+
 </style>
