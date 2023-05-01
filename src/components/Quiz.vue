@@ -195,19 +195,7 @@
                   emission reduction
                 </h3>
                 <p>
-                  Here are some small suggestions for energy saving and emission
-                  reduction: <br />
-                  <br />
-                  1. Try to walk for places with a short distance, and choose
-                  public transportation for places with a long distance. <br />
-                  2. Reduce the use of various disposable items, including
-                  disposable tableware, disposable plastic bags, etc. <br />
-                  3. Comply with the garbage classification rules, and divide
-                  daily garbage into recyclable and non-recyclable garbage.
-                  <br />
-                  4. Reduce the use of chemicals. 5. If possible, support the
-                  afforestation cause so as to better care for flowers and
-                  trees.
+                  The importance of low-carbon life lies in reducing greenhouse gas emissions and protecting the earth's ecological environment. At the same time, it can also save energy, reduce energy costs, and improve the quality of life.
                 </p>
               </div>
             </div>
@@ -433,6 +421,7 @@ export default {
 .picContent .el-row img {
   width: 500px;
 }
+
 .textContent p {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 1em;
