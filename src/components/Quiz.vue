@@ -195,7 +195,10 @@
                   emission reduction
                 </h3>
                 <p>
-                  The importance of low-carbon life lies in reducing greenhouse gas emissions and protecting the earth's ecological environment. At the same time, it can also save energy, reduce energy costs, and improve the quality of life.
+                  The importance of low-carbon life lies in reducing greenhouse
+                  gas emissions and protecting the earth's ecological
+                  environment. At the same time, it can also save energy, reduce
+                  energy costs, and improve the quality of life.
                 </p>
               </div>
             </div>
@@ -281,48 +284,55 @@
     <el-tabs type="border-card" class="suggestionContent">
       <el-tab-pane label="Daily life">
         <el-row :gutter="20">
-          <el-col :span="12"><div class="grid-content bg-purple">
-            <img src="../assets/daily.jpg" alt="">
-          </div></el-col>
-          <el-col :span="12"><div class="grid-content bg-purple">
-            <h4>Daily life suggestions</h4>
-            <p>
-            1.Reduce the use of disposable products such as plastic bags, straws, and water bottles.
-            <br>
-            2.Save energy by turning off lights and electronics when not in use.
-            <br>
-            3.Choose energy-efficient appliances and light bulbs.
-            <br>
-            4.Use reusable containers and utensils instead of disposable ones.
-            <br>
-            5.Practice recycling and composting to reduce waste.
-            <br>
-            </p>
-           
-          </div></el-col>
+          <el-col :span="12"
+            ><div class="grid-content bg-purple">
+              <img src="../assets/daily.jpg" alt="" /></div
+          ></el-col>
+          <el-col :span="12"
+            ><div class="grid-content bg-purple">
+              <h4>Daily life suggestions</h4>
+              <p>
+                1.Reduce the use of disposable products such as plastic bags,
+                straws, and water bottles.
+                <br />
+                2.Save energy by turning off lights and electronics when not in
+                use.
+                <br />
+                3.Choose energy-efficient appliances and light bulbs.
+                <br />
+                4.Use reusable containers and utensils instead of disposable
+                ones.
+                <br />
+                5.Practice recycling and composting to reduce waste.
+                <br />
+              </p></div
+          ></el-col>
         </el-row>
       </el-tab-pane>
       <el-tab-pane label="Transportation">
         <el-row :gutter="20">
-          <el-col :span="12"><div class="grid-content bg-purple">
-            <img src="../assets/transportation.jpg" alt="">
-          </div></el-col>
-          <el-col :span="12"><div class="grid-content bg-purple">
-            <h4>Transportation suggestions</h4>
-            <p>
-            1.Use public transportation, such as buses or trains, instead of driving a car.
-            <br>
-            2.Walk or bike short distances instead of driving a car.
-            <br>
-            3.Use a carpooling service to share rides with others.
-            <br>
-            4.Consider purchasing an electric or hybrid vehicle if possible.
-            <br>
-            5.When driving, maintain a consistent speed and avoid sudden accelerations or braking.
-            <br>
-            </p>
-           
-          </div></el-col>
+          <el-col :span="12"
+            ><div class="grid-content bg-purple">
+              <img src="../assets/transportation.jpg" alt="" /></div
+          ></el-col>
+          <el-col :span="12"
+            ><div class="grid-content bg-purple">
+              <h4>Transportation suggestions</h4>
+              <p>
+                1.Use public transportation, such as buses or trains, instead of
+                driving a car.
+                <br />
+                2.Walk or bike short distances instead of driving a car.
+                <br />
+                3.Use a carpooling service to share rides with others.
+                <br />
+                4.Consider purchasing an electric or hybrid vehicle if possible.
+                <br />
+                5.When driving, maintain a consistent speed and avoid sudden
+                accelerations or braking.
+                <br />
+              </p></div
+          ></el-col>
         </el-row>
       </el-tab-pane>
     </el-tabs>
@@ -498,13 +508,13 @@ export default {
 .el-steps {
   margin-top: 30px;
 }
-.suggestionContent img{
- width: 100%;
+.suggestionContent img {
+  width: 100%;
 }
-.suggestionContent h4{
+.suggestionContent h4 {
   text-align: center;
 }
-.suggestionContent p{
+.suggestionContent p {
   font-family: "Open Sans", sans-serif;
   width: 90%;
   text-align: justify;

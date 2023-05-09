@@ -1,17 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css"
     />
     <link rel="stylesheet" href="style1.css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
       #mapid {
         height: 300px;
@@ -27,74 +37,115 @@
         transition-delay:0.8s;
     } */
 
-    #mapid{
+      #mapid {
         transition: 0.2s;
-        border: 3px solid green;
+        border: 3px solid #252832;
         border-radius: 15px;
-    }
+      }
 
-    #speedChart{
+      #speedChart {
         transition: 0.2s;
-        border: 3px solid green;
+        border: 3px solid #252832;
         border-radius: 15px;
-    }
+      }
 
-    /* #speedChart:hover{
+      /* #speedChart:hover{
         transform: scale(1.1);
         box-shadow: 0px 10px 20px 2px rgba(0, 0, 0, 0.25);
         transition-delay:0.2s;
     } */
 
-    #description{
-  border: 3px solid green;
-  border-radius: 15px;
-  text-align: justify;
-    }
-    #box_year{
-      margin-left: 15px;
-      margin-top: 15px;
-    }
-    
+      #pie {
+        border: 3px solid #252832;
+        border-radius: 15px;
+        text-align: center;
+      }
+
+      #pie_1 {
+        min-width: 0;
+      }
+
+      #text-pie {
+        font-size: 25px ;
+      }
+
+      #box_state{
+        background-color: rgba(37, 40, 50, 0.1);
+      }
+
+      #box_year{
+        background-color: rgba(37, 40, 50, 0.1);
+      }
 
     </style>
-</head>
-<body>
-    <!-- <input type="range" id="slider" min="1990" max="2017" id="slider" /> -->
+  </head>
+  <body>
     <span id="display"></span>
-    <select id="box_year">
+    <select
+      id="box_year"
+      class="bg-blue-100 mx-3 my-2 border border-green-500 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/6 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+    >
       <script language="javascript" type="text/javascript">
-        for (var d = 1990; d <= 2017; d++) {
+        for (var d = 1990; d <= 2020; d++) {
           document.write("<option>" + d + "</option>");
         }
       </script>
     </select>
     <div class="container">
-        <div class="row">
-            <div class="col-8">
-                <div id="mapid"></div>
-                <select id="box_state">
-                <option selected>NSW</option>
-                <option>VIC</option>
-                <option>QLD</option>
-                <option>SA</option>
-                <option>WA</option>
-                <option>TAS</option>
-                <option>NT</option>
-                </select>
-                <canvas id="speedChart" width="600" height="300"></canvas>
-            </div>
-            <div class="col-4" id="description">
-                New South Wales (NSW) showed a consistent decrease in CO2 emissions per capita throughout the given period. From 29.9 tonnes per capita in 1990, it dropped to 16.7 tonnes per capita in 2017. This indicates a successful effort to reduce emissions through various policies and technological advancements. <br>
-<br>
-The Northern Territory (NT) had the highest CO2 emissions per capita in multiple years throughout the period, peaking at 105.9 tonnes per capita in 2000. Despite reducing emissions to 66.9 tonnes per capita in 2017, NT remained one of the largest emitters in Australia, likely due to its vast territory and significant mining and natural gas industries. <br>
-<br>
-South Australia (SA) showed considerable progress in reducing CO2 emissions per capita, declining from 25.2 tonnes per capita in 1990 to 12.8 tonnes per capita in 2017. This can be attributed to the state's increased focus on renewable energy sources such as wind and solar power.<br>
-<br>
-Victoria (VIC) demonstrated a gradual decrease in CO2 emissions per capita over the years. From 24.7 tonnes per capita in 1990, it dropped to 17.4 tonnes per capita in 2017. This reflects the state's efforts in implementing sustainable practices and transitioning to cleaner energy sources.<br>
-<br>
-Western Australia (WA) experienced fluctuations in its CO2 emissions per capita. While it managed to reduce its emissions from 43.8 tonnes per capita in 1990 to 34.4 tonnes per capita in 2017, the state still had relatively high emissions, possibly due to its large mining and natural gas sectors.<br>
+      <div class="row">
+        <div class="col-8">
+          <div id="mapid"></div>
+
+          <select
+            id="box_state"
+            class="my-2 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/4 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          >
+            <option selected>NSW</option>
+            <option>VIC</option>
+            <option>QLD</option>
+            <option>SA</option>
+            <option>WA</option>
+            <option>TAS</option>
+            <option>NT</option>
+          </select>
+          <canvas id="speedChart" width="600" height="300"></canvas>
         </div>
+        <div class="col-4" id="pie">
+          <div class="px-10 center" id="text-pie">Number of Co2 per Industrial area(kt Co2)</div>
+          <table>
+            <tr>
+              <td><canvas class="mx-4" id="pie_1" width="200" height="200"></canvas></td>
+              <td><canvas id="pie_2" width="200" height="200"></canvas></td>
+          </tr>
+          <tr class="">
+            <td><canvas class="mx-4 my-4" id="pie_3" width="200" height="200"></canvas></td>
+            <td><canvas id="pie_4" width="200" height="200"></canvas></td>
+        </tr>
+        <tr>
+          <td><canvas class="mx-4 my-4" id="pie_5" width="200" height="200"></canvas></td>
+          <td><canvas id="pie_6" width="200" height="200"></canvas></td>
+      </tr>
+      <tr>
+        <td><canvas class="mx-4 my-4" id="pie_7" width="200" height="200"></canvas></td>
+      </tr>
+          </table>
+        </div>
+        
+        
+      </div>
     </div>
+    
+    
+    <!-- <div class="flex flex-wrap">
+      <canvas class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/6 mb-4 bg-gray-500" id="pie_1" style="height:50vh;"></canvas>
+      <canvas class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/6 mb-4 bg-gray-500" id="pie_2" style="height:50vh;"></canvas>
+    <canvas class="" id="pie_3" width="400" height="400"></canvas>
+    <canvas class="" id="pie_4" width="400" height="400"></canvas>
+    <canvas class="" id="pie_5" width="400" height="400"></canvas>
+    <canvas class="" id="pie_6" width="400" height="400"> </canvas>
+    <canvas class="" id="pie_7" width="400" height="400"></canvas> -->
+    <!-- </div> --> 
+    
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -102,251 +153,539 @@ Western Australia (WA) experienced fluctuations in its CO2 emissions per capita.
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
     <script>
-        axios({
+      axios({
         url: `https://backendtp234.onrender.com/get_fulldata`,
         method: "get",
       }).then((res) => {
         this.records = res.data;
         data = JSON.parse(JSON.stringify(this.records));
 
-        const data_state = data.sort((a, b) => {
-            if (a.Year < b.Year) {
-                return -1;
+        axios({
+          url: `https://backendtp234.onrender.com/get_fulldata1`,
+          method: "get",
+        }).then((res) => {
+          this.records1 = res.data;
+          data_pie = JSON.parse(JSON.stringify(this.records1));
+
+          console.log(data_pie);
+
+          data_pie_2020 = data_pie.filter((user) => user.year === 2020);
+
+          data_pie_default = [];
+
+          for (i in data_pie_2020) {
+            data_pie_default.push([
+              data_pie_2020[i].agriculture,
+              data_pie_2020[i].energy,
+              data_pie_2020[i].industry_process,
+              data_pie_2020[i].land_use,
+              data_pie_2020[i].waste,
+            ]);
+          }
+
+          // const data_for_pie = {
+
+          //         datasets: [{
+          //           label: 'My First Dataset',
+          //           data:
+          //         }]
+          //       };
+
+          // const picanvas = document.getElementById("pie1");
+
+          var ctx1 = document.getElementById("pie_1");
+          var ctx2 = document.getElementById("pie_2");
+          var ctx3 = document.getElementById("pie_3");
+          var ctx4 = document.getElementById("pie_4");
+          var ctx5 = document.getElementById("pie_5");
+          var ctx6 = document.getElementById("pie_6");
+          var ctx7 = document.getElementById("pie_7");
+
+          const doughnutlabel1 = {
+            id: 'doughnutLabel',
+            beforeDatasetsDraw(chart, args, pluginOptions){
+              const {ctx, data} = chart;
+              ctx.save();
+              const xCoor = chart.getDatasetMeta(0).data[0].x;
+              const yCoor = chart.getDatasetMeta(0).data[0].y;
+              ctx.font = "bold 10px sans-serif"
+              ctx.fillStyle = "rgba(54,162,235,1)"
+              ctx.textAlign = "center"
+              ctx.textBaseline = "middle"
+              ctx.fillText("New South Wales", xCoor, yCoor)
             }
-            })
-            
-            default_value = []
+          }
 
-            for (i in data_state){
-                if (data_state[i].State === "NSW"){
-                    default_value.push(data_state[i]["co2"])
-                }
+          const doughnutlabel2 = {
+            id: 'doughnutLabel',
+            beforeDatasetsDraw(chart, args, pluginOptions){
+              const {ctx, data} = chart;
+              ctx.save();
+              const xCoor = chart.getDatasetMeta(0).data[0].x;
+              const yCoor = chart.getDatasetMeta(0).data[0].y;
+              ctx.font = "bold 10px sans-serif"
+              ctx.fillStyle = "rgba(54,162,235,1)"
+              ctx.textAlign = "center"
+              ctx.textBaseline = "middle"
+              ctx.fillText("Victoria", xCoor, yCoor)
             }
-            const speedCanvas = document.getElementById("speedChart");
+          }
 
-            Chart.defaults.font.family = "Teko";
-            Chart.defaults.font.size = 22;
-            Chart.defaults.color = "black";
+          const doughnutlabel3 = {
+            id: 'doughnutLabel',
+            beforeDatasetsDraw(chart, args, pluginOptions){
+              const {ctx, data} = chart;
+              ctx.save();
+              const xCoor = chart.getDatasetMeta(0).data[0].x;
+              const yCoor = chart.getDatasetMeta(0).data[0].y;
+              ctx.font = "bold 10px sans-serif"
+              ctx.fillStyle = "rgba(54,162,235,1)"
+              ctx.textAlign = "center"
+              ctx.textBaseline = "middle"
+              ctx.fillText("Queesland", xCoor, yCoor)
+            }
+          }
 
-            let cols = [];
-            for (let i = 1990; i <= 2017; i++) {
+          const doughnutlabel4 = {
+            id: 'doughnutLabel',
+            beforeDatasetsDraw(chart, args, pluginOptions){
+              const {ctx, data} = chart;
+              ctx.save();
+              const xCoor = chart.getDatasetMeta(0).data[0].x;
+              const yCoor = chart.getDatasetMeta(0).data[0].y;
+              ctx.font = "bold 10px sans-serif"
+              ctx.fillStyle = "rgba(54,162,235,1)"
+              ctx.textAlign = "center"
+              ctx.textBaseline = "middle"
+              ctx.fillText("South Australia", xCoor, yCoor)
+            }
+          }
+
+          const doughnutlabel5 = {
+            id: 'doughnutLabel',
+            beforeDatasetsDraw(chart, args, pluginOptions){
+              const {ctx, data} = chart;
+              ctx.save();
+              const xCoor = chart.getDatasetMeta(0).data[0].x;
+              const yCoor = chart.getDatasetMeta(0).data[0].y;
+              ctx.font = "bold 10px sans-serif"
+              ctx.fillStyle = "rgba(54,162,235,1)"
+              ctx.textAlign = "center"
+              ctx.textBaseline = "middle"
+              ctx.fillText("Western Australia", xCoor, yCoor)
+            }
+          }
+
+          const doughnutlabel6 = {
+            id: 'doughnutLabel',
+            beforeDatasetsDraw(chart, args, pluginOptions){
+              const {ctx, data} = chart;
+              ctx.save();
+              const xCoor = chart.getDatasetMeta(0).data[0].x;
+              const yCoor = chart.getDatasetMeta(0).data[0].y;
+              ctx.font = "bold 10px sans-serif"
+              ctx.fillStyle = "rgba(54,162,235,1)"
+              ctx.textAlign = "center"
+              ctx.textBaseline = "middle"
+              ctx.fillText("Tasmania", xCoor, yCoor)
+            }
+          }
+
+          const doughnutlabel7 = {
+            id: 'doughnutLabel',
+            beforeDatasetsDraw(chart, args, pluginOptions){
+              const {ctx, data} = chart;
+              ctx.save();
+              const xCoor = chart.getDatasetMeta(0).data[0].x;
+              const yCoor = chart.getDatasetMeta(0).data[0].y;
+              ctx.font = "bold 10px sans-serif"
+              ctx.fillStyle = "rgba(54,162,235,1)"
+              ctx.textAlign = "center"
+              ctx.textBaseline = "middle"
+              ctx.fillText("Northern Territory", xCoor, yCoor)
+            }
+          }
+
+          var myChart1 = new Chart(ctx1, {
+            type: "doughnut",
+            data: {
+              labels: [
+                "Agriculture",
+                "Energy",
+                "Industry processing",
+                "Land_use",
+                "Waste",
+              ],
+              datasets: [
+                {
+                  label: "# of industry CO2",
+                  data: data_pie_default[0],
+                  hoverOffset: 15,
+                  borderWidth: 1,
+                },
+              ],
+            },
+            options: {
+    responsive: true,
+    cutoutPercentage: 75,
+    plugins: {legend: {
+      display: false
+    },
+    tooltip: {
+        titleFont: {
+          size: 15
+        },
+        bodyFont: {
+          size: 10
+        },
+        footerFont: {
+          size: 10 // there is no footer by default
+        }
+      }}, 
+    
+  }, plugins: [doughnutlabel1]
+          });
+
+          
+
+          var myChart2 = new Chart(ctx2, {
+            type: "doughnut",
+            data: {
+              labels: [
+                "Agriculture",
+                "Energy",
+                "Industry processing",
+                "Land_use",
+                "Waste",
+              ],
+              datasets: [
+                {
+                  label: "# of industry CO2",
+                  data: data_pie_default[1],
+                  hoverOffset: 15,
+                  borderWidth: 1,
+                },
+              ],
+            },
+            options: {
+    responsive: true,
+    cutoutPercentage: 75,
+    plugins: {legend: {
+      display: false
+    },tooltip: {
+        titleFont: {
+          size: 15
+        },
+        bodyFont: {
+          size: 10
+        },
+        footerFont: {
+          size: 10 // there is no footer by default
+        }
+      }}
+  }, plugins: [doughnutlabel2]
+          });
+
+          var myChart3 = new Chart(ctx3, {
+            type: "doughnut",
+            data: {
+              labels: [
+                "Agriculture",
+                "Energy",
+                "Industry processing",
+                "Land_use",
+                "Waste",
+              ],
+              datasets: [
+                {
+                  label: "# of industry CO2",
+                  data: data_pie_default[2],
+                  hoverOffset: 15,
+                  borderWidth: 1,
+                },
+              ],
+            },
+            options: {
+    responsive: true,
+    cutoutPercentage: 75,
+    plugins: {legend: {
+      display: false
+    },
+    tooltip: {
+        titleFont: {
+          size: 15
+        },
+        bodyFont: {
+          size: 10
+        },
+        footerFont: {
+          size: 10 // there is no footer by default
+        }
+      }}, 
+    
+  }, plugins: [doughnutlabel3]
+          });
+
+          var myChart4 = new Chart(ctx4, {
+            type: "doughnut",
+            data: {
+              labels: [
+                "Agriculture",
+                "Energy",
+                "Industry processing",
+                "Land_use",
+                "Waste",
+              ],
+              datasets: [
+                {
+                  label: "# of industry CO2",
+                  data: data_pie_default[3],
+                  hoverOffset: 15,
+                  borderWidth: 1,
+                },
+              ],
+            },
+            options: {
+    responsive: true,
+    cutoutPercentage: 75,
+    plugins: {legend: {
+      display: false
+    },
+    tooltip: {
+        titleFont: {
+          size: 15
+        },
+        bodyFont: {
+          size: 10
+        },
+        footerFont: {
+          size: 10 // there is no footer by default
+        }
+      }}, 
+    
+  }, plugins: [doughnutlabel4]
+          });
+
+          var myChart5 = new Chart(ctx5, {
+            type: "doughnut",
+            data: {
+              labels: [
+                "Agriculture",
+                "Energy",
+                "Industry processing",
+                "Land_use",
+                "Waste",
+              ],
+              datasets: [
+                {
+                  label: "# of industry CO2",
+                  data: data_pie_default[4],
+                  hoverOffset: 15,
+                  borderWidth: 1,
+                },
+              ],
+            },
+            options: {
+    responsive: true,
+    cutoutPercentage: 75,
+    plugins: {legend: {
+      display: false
+    },
+    tooltip: {
+        titleFont: {
+          size: 15
+        },
+        bodyFont: {
+          size: 10
+        },
+        footerFont: {
+          size: 10 // there is no footer by default
+        }
+      }}, 
+    
+  }, plugins: [doughnutlabel5]
+          });
+
+          var myChart6 = new Chart(ctx6, {
+            type: "doughnut",
+            data: {
+              labels: [
+                "Agriculture",
+                "Energy",
+                "Industry processing",
+                "Land_use",
+                "Waste",
+              ],
+              datasets: [
+                {
+                  label: "# of industry CO2",
+                  data: data_pie_default[5],
+                  hoverOffset: 15,
+                  borderWidth: 1,
+                },
+              ],
+            },
+            options: {
+    responsive: true,
+    cutoutPercentage: 75,
+    plugins: {legend: {
+      display: false
+    },
+    tooltip: {
+        titleFont: {
+          size: 15
+        },
+        bodyFont: {
+          size: 10
+        },
+        footerFont: {
+          size: 10 // there is no footer by default
+        }
+      }}, 
+    
+  }, plugins: [doughnutlabel6]
+          });
+
+          var myChart7 = new Chart(ctx7, {
+            type: "doughnut",
+            data: {
+              labels: [
+                "Agriculture",
+                "Energy",
+                "Industry processing",
+                "Land_use",
+                "Waste",
+              ],
+              datasets: [
+                {
+                  label: "# of industry CO2",
+                  data: data_pie_default[6],
+                  hoverOffset: 15,
+                  borderWidth: 1,
+                },
+              ],
+            },
+            options: {
+    responsive: true,
+    cutoutPercentage: 75,
+    plugins: {legend: {
+      display: false
+    },
+    tooltip: {
+        titleFont: {
+          size: 15
+        },
+        bodyFont: {
+          size: 10
+        },
+        footerFont: {
+          size: 10 // there is no footer by default
+        }
+      }}, 
+    
+  }, plugins: [doughnutlabel7]
+          });
+
+
+
+
+
+
+
+
+
+
+          // line chart
+
+          const data_state = data.sort((a, b) => {
+            if (a.year < b.year) {
+              return -1;
+            }
+          });
+
+          default_value = [];
+
+          for (i in data_state) {
+            if (data_state[i].state === "NSW") {
+              default_value.push(data_state[i]["co2"]);
+            }
+          }
+          const speedCanvas = document.getElementById("speedChart");
+
+          Chart.defaults.font.family = "Teko";
+          Chart.defaults.font.size = 22;
+          Chart.defaults.color = "black";
+
+          let cols = [];
+          for (let i = 1990; i <= 2020; i++) {
             cols.push(i);
-            }
+          }
 
-            let speedData = {
+          let speedData = {
             labels: cols,
             datasets: [
-                {
+              {
                 label: "Co2 in NSW",
                 data: default_value,
                 backgroundColor: "rgba(227, 82, 20, 0.3)",
                 hoverBackgroundColor: "rgba(227, 82, 20, 1)",
                 hoverBorderColor: "red",
                 fill: {
-                    target: "origin",
-                    above: "rgba(227, 82, 20, 0.3)", // Area will be red above the origin
-                    below: "rgba(227, 82, 20, 0.3)", // And blue below the origin
+                  target: "origin",
+                  above: "rgba(227, 82, 20, 0.3)", // Area will be red above the origin
+                  below: "rgba(227, 82, 20, 0.3)", // And blue below the origin
                 },
                 pointStyle: "circle",
                 pointRadius: 5,
                 pointHoverRadius: 25,
-                },
+              },
             ],
-            };
+            yAxisID: "percentage"
+          };
 
-            let lineChart = new Chart(speedCanvas, {
+          let lineChart = new Chart(speedCanvas, {
             type: "line",
             data: speedData,
-            Option: {
-                reponsive: true,
-                tooltip: {
-                usePointStyle: true,
-                
-                },
+            options: {
+              scales: { x: {
+                title: {
+                  display: true,
+                  text: "Year"
+                }
+              }
+  }   , y: { title: {
+                  display: true,
+                  text: "Number of Co2"
+                }
+  }
             },
-            });
-
-
-            var map = L.map("mapid");
-
-        map.setView([-25, 133], 3);
-
-        var tiles = L.tileLayer(
-          "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
-          {
-            maxZoom: 19,
-            attribution:
-              '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-          }
-        ).addTo(map);
-
-        const box = document.getElementById("box_year");
-
-        axios({
-          url: `https://backendtp234.onrender.com/search1?message=2017`,
-          method: "get",
-        }).then((res) => {
-          this.records = res.data;
-
-          this.file = JSON.parse(JSON.stringify(this.records));
-
-          var color_array = [];
-
-          for (i in this.file.features) {
-            color_array.push(this.file.features[i].properties.density);
-          }
-
-          color_array = color_array.sort(function (a, b) {
-            return b - a;
+            Option: {
+              
+              reponsive: true,
+              tooltip: {
+                usePointStyle: true,
+              },
+              
+            },
           });
 
-          function style(feature) {
-            return {
-              fillColor: getColor(feature.properties.density),
-              weight: 2,
-              opacity: 1,
-              color: "white",
-              dashArray: "3",
-              fillOpacity: 0.7,
-            };
-          }
+          var map = L.map("mapid");
 
-          const info = L.control();
+          map.setView([-25, 133], 3);
 
-          info.onAdd = function (map) {
-            this._div = L.DomUtil.create("div", "info");
-            this.update();
-            return this._div;
-          };
-
-          info.update = function (props) {
-            const contents = props
-              ? `<b>${props.name}</b><br />${props.density} tons / capita<sup>2</sup>`
-              : "Hover over a state";
-            this._div.innerHTML = `<h4>Australia Co2</h4>${contents}`;
-          };
-
-          info.addTo(map);
-
-          function getColor(d) {
-            return d < 10
-              ? "#FFEDA0"
-              : d < 20
-              ? "#FED976"
-              : d < 30
-              ? "#FEB24C"
-              : d < 40
-              ? "#FD8D3C"
-              : d < 50
-              ? "#FC4E2A"
-              : d < 60
-              ? "#E31A1C"
-              : d < 70
-              ? "#BD0026"
-              : "#800026";
-          }
-
-          function zoomToFeature(e) {
-            map.fitBounds(e.target.getBounds());
-          }
-
-          function highlightFeature(e) {
-            var layer = e.target;
-
-            console.log(layer.feature.properties.name);
-
-            data_change = [];
-                for (i in data_state) {
-                    if (data_state[i].State === layer.feature.properties.name){
-                        data_change.push(data_state[i]["co2"])
-                } 
+          var tiles = L.tileLayer(
+            "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+            {
+              maxZoom: 19,
+              attribution:
+                '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
             }
+          ).addTo(map);
 
-            lineChart.data.datasets[0].data = data_change;
-            lineChart.data.datasets[0].label = `CO2 in ${layer.feature.properties.name}`;
-            lineChart.update();
-
-            layer.setStyle({
-              weight: 5,
-              color: "#666",
-              dashArray: "",
-              fillOpacity: 0.2,
-            });
-
-            layer.bringToFront();
-
-            info.update(layer.feature.properties);
-          }
-
-          var geojson = L.geoJson(this.file, {
-            style,
-            onEachFeature,
-          }).addTo(map);
-
-          function resetHighlight(e) {
-            geojson.resetStyle(e.target);
-            info.update();
-          }
-
-          function onEachFeature(feature, layer) {
-            layer.on({
-              mouseover: highlightFeature,
-              mouseout: resetHighlight,
-              click: zoomToFeature,
-            });
-          }
-
-          // geojson = L.geoJson(statesData, {
-          //     style: style,
-          //     onEachFeature: onEachFeature
-          // }).addTo(map);
-
-          // method that we will use to update the control based on feature properties passed
-
-          info.update = function (props) {
-            this._div.innerHTML =
-              "<h4>CO2 in Australia per states</h4>" +
-              (props
-                ? "<b>" +
-                  props.STATE_NAME +
-                  "</b><br />" +
-                  props.density +
-                  " tons / capita"
-                : "Hover over a state");
-          };
-
-          info.addTo(map);
-
-          var legend = L.control({ position: "bottomright" });
-
-          legend.onAdd = function (map) {
-            var div = L.DomUtil.create("div", "info legend"),
-              grades = [0, 10, 20, 30, 40, 50, 60, 70],
-              labels = [];
-
-            // loop through our density intervals and generate a label with a colored square for each interval
-            for (var i = 0; i < grades.length; i++) {
-              div.innerHTML +=
-                '<i style="background:' +
-                getColor(grades[i] + 1) +
-                '"></i> ' +
-                grades[i] +
-                (grades[i + 1] ? "&ndash;" + grades[i + 1] + "<br>" : "+");
-            }
-
-            return div;
-          };
-
-          legend.addTo(map);
-        });
-
-        box.onchange = function () {
-          document.querySelectorAll(".info").forEach((el) => el.remove());
-
-          this.message = box.value;
+          const box = document.getElementById("box_year");
 
           axios({
-            url: `https://backendtp234.onrender.com/search1?message=${this.message}`,
+            url: `https://backendtp234.onrender.com/search1?message=2020`,
             method: "get",
           }).then((res) => {
             this.records = res.data;
@@ -384,7 +723,7 @@ Western Australia (WA) experienced fluctuations in its CO2 emissions per capita.
 
             info.update = function (props) {
               const contents = props
-                ? `<b>${props.name}</b><br />${props.density} tons / capita<sup>2</sup>`
+                ? `<b>${props.name}</b><br />${props.density} kt CO2-e`
                 : "Hover over a state";
               this._div.innerHTML = `<h4>Australia Co2</h4>${contents}`;
             };
@@ -392,19 +731,19 @@ Western Australia (WA) experienced fluctuations in its CO2 emissions per capita.
             info.addTo(map);
 
             function getColor(d) {
-              return d < 10
+              return d < 10000
                 ? "#FFEDA0"
-                : d < 20
+                : d < 20000
                 ? "#FED976"
-                : d < 30
+                : d < 30000
                 ? "#FEB24C"
-                : d < 40
+                : d < 40000
                 ? "#FD8D3C"
-                : d < 50
+                : d < 50000
                 ? "#FC4E2A"
-                : d < 60
+                : d < 60000
                 ? "#E31A1C"
-                : d < 70
+                : d < 100000
                 ? "#BD0026"
                 : "#800026";
             }
@@ -419,15 +758,15 @@ Western Australia (WA) experienced fluctuations in its CO2 emissions per capita.
               console.log(layer.feature.properties.name);
 
               data_change = [];
-                for (i in data_state) {
-                    if (data_state[i].State === layer.feature.properties.name){
-                        data_change.push(data_state[i]["co2"])
-                } 
-            }
+              for (i in data_state) {
+                if (data_state[i].state === layer.feature.properties.name) {
+                  data_change.push(data_state[i]["co2"]);
+                }
+              }
 
-            lineChart.data.datasets[0].data = data_change;
-            lineChart.data.datasets[0].label = `CO2 in ${layer.feature.properties.name}`;
-            lineChart.update();
+              lineChart.data.datasets[0].data = data_change;
+              lineChart.data.datasets[0].label = `CO2 in ${layer.feature.properties.name}`;
+              lineChart.update();
 
               layer.setStyle({
                 weight: 5,
@@ -474,7 +813,7 @@ Western Australia (WA) experienced fluctuations in its CO2 emissions per capita.
                     props.STATE_NAME +
                     "</b><br />" +
                     props.density +
-                    " tons / capita"
+                    " kt CO2-e"
                   : "Hover over a state");
             };
 
@@ -484,7 +823,7 @@ Western Australia (WA) experienced fluctuations in its CO2 emissions per capita.
 
             legend.onAdd = function (map) {
               var div = L.DomUtil.create("div", "info legend"),
-                grades = [0, 10, 20, 30, 40, 50, 60, 70],
+                grades = [0, 10000, 20000, 30000, 40000, 50000, 60000, 70000],
                 labels = [];
 
               // loop through our density intervals and generate a label with a colored square for each interval
@@ -502,32 +841,228 @@ Western Australia (WA) experienced fluctuations in its CO2 emissions per capita.
 
             legend.addTo(map);
           });
-        };
 
-        box_state.onchange = function () {
-          this.message = box_state.value;
+          box.onchange = function () {
+            document.querySelectorAll(".info").forEach((el) => el.remove());
 
-          data_change = [];
+            this.message = box.value;
+
+            console.log(box.value);
+
+            data_pie_year = data_pie.filter((user) => user.year === parseInt(box.value));
+
+            data_pie_year_modi = [];
+
+          for (i in data_pie_year) {
+            data_pie_year_modi.push([
+            data_pie_year[i].agriculture,
+            data_pie_year[i].energy,
+            data_pie_year[i].industry_process,
+            data_pie_year[i].land_use,
+            data_pie_year[i].waste,
+            ]);
+          }
+
+          myChart1.data.datasets[0].data = data_pie_year_modi[0]
+          myChart2.data.datasets[0].data = data_pie_year_modi[1]
+          myChart3.data.datasets[0].data = data_pie_year_modi[2]
+          myChart4.data.datasets[0].data = data_pie_year_modi[3]
+          myChart5.data.datasets[0].data = data_pie_year_modi[4]
+          myChart6.data.datasets[0].data = data_pie_year_modi[5]
+          myChart7.data.datasets[0].data = data_pie_year_modi[6]
+
+          myChart1.update()
+          myChart2.update()
+          myChart3.update()
+          myChart4.update()
+          myChart5.update()
+          myChart6.update()
+          myChart7.update()
+
+
+
+            
+
+            axios({
+              url: `https://backendtp234.onrender.com/search1?message=${this.message}`,
+              method: "get",
+            }).then((res) => {
+              this.records = res.data;
+
+              this.file = JSON.parse(JSON.stringify(this.records));
+
+              var color_array = [];
+
+              for (i in this.file.features) {
+                color_array.push(this.file.features[i].properties.density);
+              }
+
+              color_array = color_array.sort(function (a, b) {
+                return b - a;
+              });
+
+              function style(feature) {
+                return {
+                  fillColor: getColor(feature.properties.density),
+                  weight: 2,
+                  opacity: 1,
+                  color: "white",
+                  dashArray: "3",
+                  fillOpacity: 0.7,
+                };
+              }
+
+              const info = L.control();
+
+              info.onAdd = function (map) {
+                this._div = L.DomUtil.create("div", "info");
+                this.update();
+                return this._div;
+              };
+
+              info.update = function (props) {
+                const contents = props
+                  ? `<b>${props.name}</b><br />${props.density} kt CO2-e`
+                  : "Hover over a state";
+                this._div.innerHTML = `<h4>Australia Co2</h4>${contents}`;
+              };
+
+              info.addTo(map);
+
+              function getColor(d) {
+                return d < 10000
+                  ? "#FFEDA0"
+                  : d < 20000
+                  ? "#FED976"
+                  : d < 30000
+                  ? "#FEB24C"
+                  : d < 40000
+                  ? "#FD8D3C"
+                  : d < 50000
+                  ? "#FC4E2A"
+                  : d < 60000
+                  ? "#E31A1C"
+                  : d < 100000
+                  ? "#BD0026"
+                  : "#800026";
+              }
+
+              function zoomToFeature(e) {
+                map.fitBounds(e.target.getBounds());
+              }
+
+              function highlightFeature(e) {
+                var layer = e.target;
+
+                console.log(layer.feature.properties.name);
+
+                data_change = [];
                 for (i in data_state) {
-                    console.log(data_state[i].State)
-                    if (data_state[i].State === this.message){
-                        data_change.push(data_state[i]["co2"])
-                } 
+                  if (data_state[i].state === layer.feature.properties.name) {
+                    data_change.push(data_state[i]["co2"]);
+                  }
+                }
+
+                lineChart.data.datasets[0].data = data_change;
+                lineChart.data.datasets[0].label = `CO2 in ${layer.feature.properties.name}`;
+                lineChart.update();
+
+                layer.setStyle({
+                  weight: 5,
+                  color: "#666",
+                  dashArray: "",
+                  fillOpacity: 0.2,
+                });
+
+                layer.bringToFront();
+
+                info.update(layer.feature.properties);
+              }
+
+              var geojson = L.geoJson(this.file, {
+                style,
+                onEachFeature,
+              }).addTo(map);
+
+              function resetHighlight(e) {
+                geojson.resetStyle(e.target);
+                info.update();
+              }
+
+              function onEachFeature(feature, layer) {
+                layer.on({
+                  mouseover: highlightFeature,
+                  mouseout: resetHighlight,
+                  click: zoomToFeature,
+                });
+              }
+
+              // geojson = L.geoJson(statesData, {
+              //     style: style,
+              //     onEachFeature: onEachFeature
+              // }).addTo(map);
+
+              // method that we will use to update the control based on feature properties passed
+
+              info.update = function (props) {
+                this._div.innerHTML =
+                  "<h4>CO2 in Australia per states</h4>" +
+                  (props
+                    ? "<b>" +
+                      props.STATE_NAME +
+                      "</b><br />" +
+                      props.density +
+                      " kt CO2-e"
+                    : "Hover over a state");
+              };
+
+              info.addTo(map);
+
+              var legend = L.control({ position: "bottomright" });
+
+              legend.onAdd = function (map) {
+                var div = L.DomUtil.create("div", "info legend"),
+                  grades = [
+                    0, 10000, 20000, 30000, 40000, 50000, 60000, 100000,
+                  ],
+                  labels = [];
+
+                // loop through our density intervals and generate a label with a colored square for each interval
+                for (var i = 0; i < grades.length; i++) {
+                  div.innerHTML +=
+                    '<i style="background:' +
+                    getColor(grades[i] + 1) +
+                    '"></i> ' +
+                    grades[i] +
+                    (grades[i + 1] ? "&ndash;" + grades[i + 1] + "<br>" : "+");
+                }
+
+                return div;
+              };
+
+              legend.addTo(map);
+            });
+          };
+
+          box_state.onchange = function () {
+            this.message = box_state.value;
+
+            data_change = [];
+            for (i in data_state) {
+              console.log(data_state[i].state);
+              if (data_state[i].state === this.message) {
+                data_change.push(data_state[i]["co2"]);
+              }
             }
 
-            console.log(data_change)
+            console.log(data_change);
 
             lineChart.data.datasets[0].data = data_change;
             lineChart.data.datasets[0].label = `CO2 in ${this.message}`;
             lineChart.update();
-        };
-
-
-                    
-                });
-
-
-
+          };
+        });
+      });
     </script>
-</body>
+  </body>
 </html>
