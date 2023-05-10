@@ -7,6 +7,7 @@ import axios from 'axios'
 import locale from 'element-ui/lib/locale/lang/en'
 import './assets/global.css'
 
+
 Vue.use(ElementUI, { locale })
 axios.defaults.baseURL = 'https://backendtp234.onrender.com'
 

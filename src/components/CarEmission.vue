@@ -1,4 +1,5 @@
 <template>
+
   <div class="content">
     <el-breadcrumb separator="/">
       <el-breadcrumb-item :to="{ path: '/' }">Homepage</el-breadcrumb-item>
@@ -8,6 +9,15 @@
       <!-- <img src="../assets/car.gif" alt="" class="car_gif"> -->
       <h2 class="carHeader">Try our green calculate for your vehicle</h2>
     </div>
+      <div class="arcgis-map">
+      
+      <div id="sidebar" ref="sidebar"></div>
+      <div class="gutter"></div>
+      <main>
+        <div id="viewDiv" ref="viewDiv"></div>
+      </main>
+      
+  </div>
     <el-row :gutter="0">
       <el-col :span="16"
         ><div class="grid-content bg-purple">
@@ -115,6 +125,27 @@
 </template>
 
 <script>
+
+import { onMounted, ref } from 'vue';
+import { loadModules } from 'esri-loader';
+import SceneView from '@arcgis/core/views/SceneView';
+import MapView from '@arcgis/core/views/MapView';
+import Directions from '@arcgis/core/widgets/Directions';
+import Map from '@arcgis/core/Map';
+import Split from 'split-grid';
+import config from '@arcgis/core/config'
+import routerlayer from  '@arcgis/core/layers/RouteLayer'
+import RouteParameters from "@arcgis/core/rest/support/RouteParameters"
+import Measurement from "@arcgis/core/widgets/Measurement"
+import route from "@arcgis/core/rest/route"
+// import {MapView} from "https://js.arcgis.com/4.26/@arcgis/core/views/MapView.js";
+// import {Directions} from "https://js.arcgis.com/4.26/@arcgis/core/widgets/Directions.js";
+// import {Map} from "https://js.arcgis.com/4.26/@arcgis/core/Map.js";
+// import {Split} from "https://cdn.pika.dev/split-grid@^1.0.9";
+
+
+
+
 export default {
   data() {
     var checkPositive = (rule, value, callback) => {
@@ -163,6 +194,8 @@ export default {
         this.brands = JSON.parse(JSON.stringify(response.data)).map(car => car.Make);
 
         console.log(this.brands);
+        // Use split-grid to enable the draggable gutter
+
       } catch (error) {
         console.log(error);
       }
@@ -175,6 +208,8 @@ export default {
           `https://backendtp234.onrender.com/carbon?message=${this.selectedBrand}`
         );
         this.carbonData = JSON.parse(JSON.stringify(response.data)).map(car => car.CO2);
+
+
       } catch (error) {
         return this.$message.error("can't get emission");
       }
@@ -212,9 +247,60 @@ export default {
         this.selectedBrand = ''
         this.total = ''
 
-      }
+      },
     
-  },
+  },setup() {
+    onMounted(() => {
+      config.apiKey = "AAPK6a8387d7be0f47fc989969b60805428a3jp-miOiFvSx4geA4PpmPUnR1hfPKDj1r6B2zuPMGKb1fD3LmsDDE24p0kRz9Be0"
+      const routeUrl = "https://route-api.arcgis.com/arcgis/rest/services/World/Route/NAServer/Route_World";
+
+      Split({
+  columnGutters: [
+    {
+      track: 1,
+      element: document.querySelector(".gutter")
+    }
+  ]
+});
+
+var map = new Map({
+  basemap: "streets"
+});
+
+var viewOptions = {
+  container: "viewDiv",
+  map: map,
+  center: [-101.17, 35],
+  zoom: 4
+};
+
+// 2D:
+var view = new MapView(viewOptions);
+
+// 3D:
+// var view = new SceneView(viewOptions);
+
+var directionsWidget = new Directions({
+  view: view,
+  container: document.getElementById("sidebar"),
+  // Point the URL to a valid route service that uses an
+  // ArcGIS Online hosted service proxy instead of the default service
+  // code from https://developers.arcgis.com/javascript/latest/sample-code/sandbox/index.html?sample=widgets-directions
+  routeServiceUrl: routeUrl
+});
+
+directionsWidget.on("directions-tracked", function(evt) {
+  var route = evt.result.routeResults[0].route;
+  var distance = route.summary.totalLength;
+  console.log("Route distance: " + distance + " meters");
+
+  this.distance = distance
+});
+
+
+    });
+  }
+
   
 };
 </script>
@@ -307,6 +393,32 @@ a{
 
 .resetButton,.checkButton{
   width: 80px;
+}
+
+.arcgis-map {
+  display: grid;
+  height: 100vh;
+  grid-template-columns: 1fr 5px 1fr;
+}
+
+.gutter {
+  grid-column: 2;
+  background-image: url('data:image/svg+xml,%3Csvg%20version=%221.1%22%20id=%22Layer_1%22%20xmlns=%22http://www.w3.org/2000/svg%22%20xmlns:xlink=%22http://www.w3.org/1999/xlink%22%20x=%220px%22%20y=%220px%22%20viewBox=%220%200%206%2020%22%20style=%22enable-background:new%200%200%206%2020;%22%20xml:space=%22preserve%22%3E%3Cstyle%20type=%22text/css%22%3E.st0%7Bfill:%23D4D4D4;%7D%3C/style%3E%3Cg%3E%3Crect%20x=%220.5%22%20y=%220.5%22%20class=%22st0%22%20width=%221%22%20height=%2219%22/%3E%3Cpath%20d=%22M1,1v18V1%20M2,0H0v20h2V0L2,0z%22/%3E%3C/g%3E%3Cg%3E%3Crect%20x=%224.5%22%20y=%220.5%22%20class=%22st0%22%20width=%221%22%20height=%2219%22/%3E%3Cpath%20d=%22M5,1v18V1%20M6,0H4v20h2V0L6,0z%22/%3E%3C/g%3E%3C/svg%3E');
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 7px;
+  margin-right: 2px;
+  cursor: col-resize;
+}
+
+main {
+  grid-column: 3;
+}
+
+/* Tell the map control to take 100% of its container: */
+#viewDiv {
+  height: 100%;
+  width: 100%;
 }
 
 </style>

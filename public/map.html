@@ -59,6 +59,8 @@
         border: 3px solid #252832;
         border-radius: 15px;
         text-align: center;
+        overflow: scroll;
+        height: 100vh
       }
 
       #pie_1 {
@@ -77,6 +79,10 @@
         background-color: rgba(37, 40, 50, 0.1);
       }
 
+      #map_chart{
+        height: 100vh
+      }
+
     </style>
   </head>
   <body>
@@ -91,7 +97,7 @@
         }
       </script>
     </select>
-    <div class="container">
+    <div class="container" id="map_chart">
       <div class="row">
         <div class="col-7">
           <div id="mapid"></div>
