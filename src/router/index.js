@@ -7,6 +7,8 @@ import Search from '../components/Search.vue'
 import Quiz from '../components/Quiz.vue'
 import Facts from '../components/Facts.vue'
 import Trend from '../components/Trend.vue'
+import Damage from '../components/Damage.vue'
+import Transport from '../components/Transport.vue'
 
 
 
@@ -23,6 +25,8 @@ const router = new Router({
       {path:'/survey',component:Quiz},
       {path:'/facts',component:Facts},
       {path:'/trend',component:Trend},
+      {path:'/damage',component:Damage},
+      {path:'/transport',component:Transport},
     ]
   },
     

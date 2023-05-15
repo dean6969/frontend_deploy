@@ -9,7 +9,7 @@
       <!-- <img src="../assets/car.gif" alt="" class="car_gif"> -->
       <h2 class="carHeader">Try our green calculate for your vehicle</h2>
     </div>
-      <div class="arcgis-map">
+      <!-- <div class="arcgis-map">
       
       <div id="sidebar" ref="sidebar"></div>
       <div class="gutter"></div>
@@ -17,7 +17,7 @@
         <div id="viewDiv" ref="viewDiv"></div>
       </main>
       
-  </div>
+  </div> -->
     <el-row :gutter="0">
       <el-col :span="16"
         ><div class="grid-content bg-purple">
@@ -126,25 +126,6 @@
 
 <script>
 
-import { onMounted, ref } from 'vue';
-import { loadModules } from 'esri-loader';
-import SceneView from '@arcgis/core/views/SceneView';
-import MapView from '@arcgis/core/views/MapView';
-import Directions from '@arcgis/core/widgets/Directions';
-import Map from '@arcgis/core/Map';
-import Split from 'split-grid';
-import config from '@arcgis/core/config'
-import routerlayer from  '@arcgis/core/layers/RouteLayer'
-import RouteParameters from "@arcgis/core/rest/support/RouteParameters"
-import Measurement from "@arcgis/core/widgets/Measurement"
-import route from "@arcgis/core/rest/route"
-// import {MapView} from "https://js.arcgis.com/4.26/@arcgis/core/views/MapView.js";
-// import {Directions} from "https://js.arcgis.com/4.26/@arcgis/core/widgets/Directions.js";
-// import {Map} from "https://js.arcgis.com/4.26/@arcgis/core/Map.js";
-// import {Split} from "https://cdn.pika.dev/split-grid@^1.0.9";
-
-
-
 
 export default {
   data() {
@@ -249,56 +230,6 @@ export default {
 
       },
     
-  },setup() {
-    onMounted(() => {
-      config.apiKey = "AAPK6a8387d7be0f47fc989969b60805428a3jp-miOiFvSx4geA4PpmPUnR1hfPKDj1r6B2zuPMGKb1fD3LmsDDE24p0kRz9Be0"
-      const routeUrl = "https://route-api.arcgis.com/arcgis/rest/services/World/Route/NAServer/Route_World";
-
-      Split({
-  columnGutters: [
-    {
-      track: 1,
-      element: document.querySelector(".gutter")
-    }
-  ]
-});
-
-var map = new Map({
-  basemap: "streets"
-});
-
-var viewOptions = {
-  container: "viewDiv",
-  map: map,
-  center: [-101.17, 35],
-  zoom: 4
-};
-
-// 2D:
-var view = new MapView(viewOptions);
-
-// 3D:
-// var view = new SceneView(viewOptions);
-
-var directionsWidget = new Directions({
-  view: view,
-  container: document.getElementById("sidebar"),
-  // Point the URL to a valid route service that uses an
-  // ArcGIS Online hosted service proxy instead of the default service
-  // code from https://developers.arcgis.com/javascript/latest/sample-code/sandbox/index.html?sample=widgets-directions
-  routeServiceUrl: routeUrl
-});
-
-directionsWidget.on("directions-tracked", function(evt) {
-  var route = evt.result.routeResults[0].route;
-  var distance = route.summary.totalLength;
-  console.log("Route distance: " + distance + " meters");
-
-  this.distance = distance
-});
-
-
-    });
   }
 
   
