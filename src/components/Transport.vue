@@ -17,7 +17,7 @@
       airplanes, ships, and boats.
     </p>
     <p>
-      We offer a navigation feature taht you can select your departure and
+      We offer a navigation feature that you can select your departure and
       destination, view your route, and compare the carbon emissions of each
       mode of transport.
     </p>
