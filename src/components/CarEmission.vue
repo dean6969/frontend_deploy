@@ -9,15 +9,7 @@
       <!-- <img src="../assets/car.gif" alt="" class="car_gif"> -->
       <h2 class="carHeader">Try our green calculate for your vehicle</h2>
     </div>
-      <!-- <div class="arcgis-map">
-      
-      <div id="sidebar" ref="sidebar"></div>
-      <div class="gutter"></div>
-      <main>
-        <div id="viewDiv" ref="viewDiv"></div>
-      </main>
-      
-  </div> -->
+
     <el-row :gutter="0">
       <el-col :span="16"
         ><div class="grid-content bg-purple">
@@ -115,7 +107,17 @@
             </router-link>
             </div>
             <div class="gif02Container">
-              <img src="../assets/carGIF02.gif" alt="" class="gif02">
+              <!-- <img src="../assets/carGIF02.gif" alt="" class="gif02"> -->
+              <p class="askText">
+                <em>
+                For more vehicle information, please check here.
+              </em>
+              </p>
+            </div>
+            <div>
+              <router-link to="/search" exact>
+              <el-button type="info">Car Emission Search</el-button>
+            </router-link>
             </div>
           </el-card>
         </div></el-col

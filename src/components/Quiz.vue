@@ -209,67 +209,7 @@
         Next
       }}</el-button>
     </div>
-    <!-- <div class="picContent">
-      <el-row :gutter="20">
-        <el-col :span="12"
-          ><div class="grid-content bg-purple">
-            <img src="../assets/view01.jpg" alt="" /></div
-        ></el-col>
-        <el-col :span="12"
-          ><div class="grid-content bg-purple-light">
-            <p>
-              As a low-cost and low-cost way of life, low-carbon life also
-              represents a healthier, more natural and safer life.
-            </p>
-          </div></el-col
-        >
-      </el-row>
-      <el-row :gutter="20">
-        <el-col :span="12"
-          ><div class="grid-content bg-purple">
-            <p>
-              First of all, low-carbon life helps to establish a new outlook on
-              life and consumption, which aims to reduce carbon emissions and
-              promote the harmonious development of man and nature.
-            </p>
-          </div></el-col
-        >
-        <el-col :span="12"
-          ><div class="grid-content bg-purple-light">
-            <img src="../assets/view02.jpg" alt="" /></div
-        ></el-col>
-      </el-row>
-      <el-row :gutter="20">
-        <el-col :span="12"
-          ><div class="grid-content bg-purple">
-            <img src="../assets/view03.jpg" alt="" /></div
-        ></el-col>
-        <el-col :span="12"
-          ><div class="grid-content bg-purple-light">
-            <p>
-              Second, low-carbon life can better coordinate economic and social
-              development and protect the environment.
-            </p>
-          </div></el-col
-        >
-      </el-row>
-      <el-row :gutter="20">
-        <el-col :span="12"
-          ><div class="grid-content bg-purple">
-            <p>
-              In addition, under the low-carbon economic model, the negative
-              effects caused by the irrational use of energy can be avoided, and
-              a new life with the theme of economic energy and green energy can
-              be enjoyed.
-            </p>
-          </div></el-col
-        >
-        <el-col :span="12"
-          ><div class="grid-content bg-purple-light">
-            <img src="../assets/view04.jpg" alt="" /></div
-        ></el-col>
-      </el-row>
-    </div> -->
+ 
     <div class="suggestions">
       <p>
         <em
@@ -305,7 +245,9 @@
                 <br />
                 5.Practice recycling and composting to reduce waste.
                 <br />
-              </p></div
+              </p>
+              
+              </div
           ></el-col>
         </el-row>
       </el-tab-pane>
@@ -331,7 +273,17 @@
                 5.When driving, maintain a consistent speed and avoid sudden
                 accelerations or braking.
                 <br />
-              </p></div
+
+              </p>
+              <em
+          ><strong
+            >We have more transportation suggestions! want to know?</strong
+          ></em
+        >
+        <router-link to="/transport" exact>
+              <el-button>Transport Suggestion</el-button>
+            </router-link>
+              </div
           ></el-col>
         </el-row>
       </el-tab-pane>

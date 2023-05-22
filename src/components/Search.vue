@@ -3,6 +3,7 @@
   <el-card class="searchContent">
     <el-breadcrumb separator="/">
       <el-breadcrumb-item :to="{ path: '/' }">Homepage</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/carEmission' }">Emission Calculator</el-breadcrumb-item>
       <el-breadcrumb-item>Emission Search</el-breadcrumb-item>
     </el-breadcrumb>
     <div class="text item searchHeader">

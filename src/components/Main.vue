@@ -49,13 +49,13 @@
               ecosystem.
             </p>
             <router-link to="/carEmission" exact>
-              <el-button type="info" class="carButton">Emission Calculator</el-button>
+              <el-button type="info" class="carButton" size="medium">Emission Calculator</el-button>
             </router-link>
             <router-link to="/search" exact>
-              <el-button type="info" class="carButton">Emission Search</el-button>
+              <el-button type="info" class="carButton" size="medium">Emission Search</el-button>
             </router-link>
             <router-link to="/facts" exact>
-              <el-button type="info" class="carButton">Car Emission Facts</el-button>
+              <el-button type="info" class="carButton" size="medium">Car Emission Facts</el-button>
             </router-link>
           </div></el-col
         >
@@ -128,7 +128,7 @@ export default {
   overflow: auto;
 }
 .InfoArea {
-  width: 70%;
+  width: 75%;
   margin: 8px auto;
   text-align: center;
 }

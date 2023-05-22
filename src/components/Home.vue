@@ -11,7 +11,7 @@
             class="el-menu-nav"
             mode="horizontal"
             text-color="#fff"
-            background-color="transparent"
+            background-color="#252832"
             active-text-color="#dbcdb1"
             :default-active="$router.currentRoute.path"
             router
@@ -19,28 +19,38 @@
             <el-menu-item :index="'/' + 'main'" class="homeClick"
               >Homepage</el-menu-item
             >
-          
-              
+            <el-submenu index="2-4">
+              <template slot="title">Car Emission</template>
               <el-menu-item :index="'/' + 'carEmission'" class="noLine"
               >Emission Calculator</el-menu-item
             >
-            <el-menu-item :index="'/' + 'search'" class="noLine"
-              >Emission Search</el-menu-item
-            >
+
             <el-menu-item :index="'/' + 'facts'" class="noLine"
               >Car Emission Facts</el-menu-item
             >
-           
-            
+
+            <el-menu-item :index="'/' + 'search'" class="noLine"
+              >Car Emission Search</el-menu-item
+            >
+
+
+
+            </el-submenu>
+
+            <el-menu-item :index="'/' + 'damage'" class="noLine"
+              >Emission Damage</el-menu-item
+            >
+
+
             <el-menu-item :index="'/' + 'survey'" class="noLine"
               >Emission Survey</el-menu-item
             >
             <el-menu-item :index="'/' + 'trend'" class="noLine"
               >Emission Trend</el-menu-item
             >
-            <el-menu-item :index="'/' + 'damage'" class="noLine"
-              >Emission Damage</el-menu-item
-            >
+
+            
+
             <el-menu-item :index="'/' + 'transport'" class="noLine"
               >Transport Suggestion</el-menu-item
             >
@@ -92,7 +102,7 @@ export default {
   border: none !important;
   border: 3px solid;
 }
-.el-submenu{
+.el-submenu {
   text-decoration: none;
   border: none !important;
 }
@@ -109,14 +119,16 @@ export default {
   background-color: transparent !important;
   color: #fff !important;
 }
-.el-menu-item:hover,.el-submenu__title:hover{
+.el-menu-item:hover,
+.el-submenu__title:hover {
   background-color: transparent !important;
   color: #dbcdb1 !important;
 }
-.el-submenu__title{
+.el-submenu__title {
   background-color: transparent !important;
 }
-.noLine:focus,.el-submenu:focus {
+.noLine:focus,
+.el-submenu:focus {
   border-bottom: none !important;
   color: #dbcdb1 !important;
   background-color: transparent !important;
@@ -124,7 +136,7 @@ export default {
 .el-menu-item {
   font-size: 14px;
 }
-.el-submenu .el-menu-item{
+.el-submenu .el-menu-item {
   background-color: #252832 !important;
 }
 
@@ -137,13 +149,13 @@ export default {
   color: #fff;
 }
 .el-header .el-col {
-  margin-left: 10%;
+  margin-left: 5%;
 }
-@media (max-width: 1480px) {
+@media (max-width: 1127.2px) {
   .el-header {
-      height: 120px !important;
-    }
+    height: 120px !important;
   }
+}
 
 .el-main {
   /* background-color: orange; */
