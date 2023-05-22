@@ -290,7 +290,7 @@ export default {
       var viewOptions = {
         container: "viewDiv",
         map: map,
-        center: [-101.17, 35],
+        center: [144.9631, -37.8136],
         zoom: 4,
       };
 
